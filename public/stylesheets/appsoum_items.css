@@ -1,0 +1,51 @@
+body {
+  padding-top: 55px;
+}
+
+div.container {
+	width:98%;
+}
+
+div.alert-container{
+	margin-top: 20px;
+}
+.mainContent {    
+    border-bottom: 1px solid #ccc;
+    min-height: 500px;
+}
+
+table.backgrid th {
+	text-align: center;
+}
+
+td.number-cell, td.integer-cell {
+	text-align: right;
+}
+
+td.boolean-cell {
+	text-align: center;
+}
+
+td.text-cell {
+	min-width: 100px;
+}
+#form textarea {
+	min-height: 120px;
+}
+
+.backgrid th, .backgrid td {    
+    max-width: 250px; 			
+    overflow: hidden;    
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#saveAlert {
+	margin-top: 10px;
+}
+
+.error{
+	background-color: #f2dede;
+    border-color: red;	/*#eed3d7;*/
+    color: #b94a48;
+}

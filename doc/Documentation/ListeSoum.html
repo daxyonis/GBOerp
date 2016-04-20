@@ -1,0 +1,72 @@
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta charset="utf-8">
+	<title>Aide Liste des Soumissions</title>
+    <style>
+      img { display:block; }
+        img.enligne { display:inline; }
+      ol {background-color: #eee; }
+      li {padding: 8px 0px; }
+      p.alert {color:crimson}
+        .bold {font-weight: bold; }
+        ol.inner-list {list-style-type: lower-alpha; }
+			</style>
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css" type="text/css">
+</head>
+<body>
+<div class="container">
+
+<p><a href="index.html">Retour à Aide</a></p>
+
+<h2>Liste des Soumissions</h2>
+    <ol>
+        <li>On accède à la liste des soumissions via le menu Soumission -> Toutes <img alt="" src="images/Soumlist_lien.PNG"></li>
+        <li>La liste des Soumissions est alors affichée et on y remarque plusieurs éléments : en-haut, des <span class="bold">filtres de recherche</span>, puis le <span class="bold">tableau</span> des soumissions, et enfin en-bas, la <span class="bold">pagination</span>. <img alt="" src="images/Soumlist_overview.PNG"></li>
+        
+        <li><span class="bold">La pagination :</span> en-bas de la liste des Soumissions, une ligne est dédiée à la pagination.
+            <img alt="" src="images/Soumlist_pagination.PNG">
+            Sur la gauche, on indique les lignes qui sont affichées et le total des lignes. Une liste déroulante permet de choisir le nombre de lignes à afficher par page. Sur la droite, on a les boutons qui permettent de naviguer d'une page à l'autre. Les boutons avec chevrons simples permettent de se déplacer d'une page précédente (&lt) ou suivante (&gt), tandis que les chevrons doubles permettent de sauter à la première page (&lt&lt) ou à la dernière (&gt&gt).
+        </li>
+        <li><span class="bold">Le tableau :</span> il est possible de trier par la plupart des colonnes du tableau en cliquant sur le petit symbole en forme de flèche(s). Par défaut, les soumissions sont triées en ordre décroissant de Numéro et Version.<img alt="" src="images/Soumlist_sortSuite.PNG">
+            Mais par exemple, en cliquant sur la flèche double de la colonne Client, on retrie sur-le-champ les soumissions en ordre (décroissant) de Client.
+        <img alt="" src="images/Soumlist_sortClient.PNG">
+            Si on les voulait en ordre croissant, il suffit de recliquer sur la flèche de la colonne Client, et cela inverse l'ordre.
+            <img alt="" src="images/Soumlist_sortClientAsc.PNG">
+        </li>
+        <li><span class="bold">Les filtres de recherche :</span> la ligne au-dessus du tableau comporte plusieurs éléments permettant de faire une recherche détaillée de soumissions. <img alt="" src="images/Soumlist_toolbar.PNG"> Noter que tous ces filtres peuvent être utilisés simultanément pour une recherche de plus en plus précise.
+            <ol class="inner-list">
+                <li><span class="bold">Recherche par numéro de soumission ou de dossier</span> : <img alt="" src="images/Soumlist_soumDossier.PNG" class="enligne"> on entre un numéro de soumission ou de dossier, puis on appuie sur Enter et la recherche débute. </li>
+                <li><span class="bold">Recherche par vendeur</span> : <img alt="" src="images/Soumlist_vendeurs.png" class="enligne"> on choisit un nom dans la liste déroulante et la recherche débute. </li>
+                <li><span class="bold">Recherche par statut</span> : <img alt="" src="images/Soumlist_statuts.png" class="enligne"> on choisit un statut dans la liste déroulante et la recherche débute. </li>
+                <li><span class="bold">Recherche par date</span> : <img alt="" src="images/Soumlist_dates.png"> les filtres date début et date de fin permettent de limiter la plage dans laquelle les soumissions ont été créées (les dates de production ou livraison ne sont pas concernées par ce filtre). On peut choisir une date dans l'un ou l'autre des filtres, ou dans les deux, et la recherche débute. </li>
+                <li><span class="bold">Recherche par mot clé</span> : <img alt="" src="images/Soumlist_search.PNG" class="enligne">à la droite des filtres, une case pour entrer un ou plusieurs mots clés. Simplement entrer le(s) mot(s) en les séparant par le signe plus (+) s'ils sont non-consécutifs.<p class="info bg-info text-center">NOTE: la recherche est insensible aux accents</p> 
+                <p class="bold">Exemples :</p>
+                <ul>                    
+                    <li>Mots clés consécutifs: <em>metro banniere</em> cherchera toutes les soumissions contenant l'expression <em>'metro banniere'</em> dans au moins l'un des champs suivants : Client, Bannière, Projet, Critère.</li>
+                    <li>Mots clés non consécutifs: <em>metro+banniere</em> cherchera toutes les soumissions contenant ET le mot <em>metro</em> ET le mot <em>banniere</em> à travers l'un ou plusieurs des champs suivants : Client, Bannière, Projet, Critère.</li>
+                    <li>La recherche est insensible aux accents : entrer le mot <em>metro</em> cherchera toutes les variantes de ce mot avec ou sans accent (<em>métro</em> ou <em>metro</em>); de même, entrer le mot <em>banniere</em> cherchera pour <em>bannière</em> ou <em>banniere</em>.</li>
+                </ul> 
+                </li>
+                <li><span class="bold">Effacer les filtres :</span> pour effacer toutes les valeurs des filtres et réinitialiser la liste, il suffit de cliquer le bouton <img alt="" src="images/Soumlist_x.PNG" class="enligne"></li>
+            </ol>
+        </li>
+        <li><span class="bold">EXEMPLES</span>
+            <ol class="inner-list">
+                <li>On cherche les soumissions du client Métro qui concernent des bannières et qui sont en Production. On choisit donc le statut En Production <img alt="" src="images/Soumlist_enprod.PNG" class="enligne">; automatiquement la recherche débute et on a plusieurs centaines de résultats. Pour raffiner davantage, on écrit les mots clés suivants : <em>metro+banniere</em> dans la case Rechercher <img alt="" src="images/Soumlist_metrobann.PNG" class="enligne">. Cette fois les résultats sont réduits aux soumissions qui correspondent à la recherche.
+                    <img alt="" src="images/Soumlist_results1.PNG">
+                </li>
+                <li>On cherche toutes les versions de la soumission 26150. On entre ce numéro dans la case Soum/Dossier, <span class="bold">on appuie sur Enter</span>, et la liste apparaît. Ce filtre est le seul qui requiert la touche Enter pour lancer la recherche.
+                    <img alt="" src="images/Soumlist_results2.PNG">
+                </li>
+                <li>On cherche les soumissions créées par Eva durant juillet et août 2015. Dans le filtre des vendeurs on choisit Eva, puis dans les calendriers des dates on choisit le début 1er juillet, puis la fin 31 août.
+                    <img alt="" src="images/Soumlist_results3.PNG">
+                </li>
+            </ol>
+        </li>
+    </ol>
+<p><a href="index.html">Retour à Aide</a></p>	
+</div>
+</body>
+</html>

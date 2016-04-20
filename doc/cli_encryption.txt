@@ -1,0 +1,185 @@
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+C:\Users\Eva>cd java
+
+C:\Users\Eva\java>cd jasypt-1.9.2\bin
+
+C:\Users\Eva\java\jasypt-1.9.2\bin>encrypt.bat input="gbowebmestre" password="Xn
+FG/duDbEtP`KI@S1uIHALbgP;HJ8aoEmK`>hT0ux;3Ok0]qM2T<Mmmm93?==Vc"
+
+----ENVIRONMENT-----------------
+
+Runtime: Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 24.60-b09
+
+
+
+----ARGUMENTS-------------------
+
+input: gbowebmestre
+password: XnFG/duDbEtP`KI@S1uIHALbgP;HJ8aoEmK`>hT0ux;3Ok0]qM2T<Mmmm93?==Vc
+
+
+
+----OUTPUT----------------------
+
+O+Hf5eAHPlHc80esZLdItJuWt5YmhpGT
+
+
+
+C:\Users\Eva\java\jasypt-1.9.2\bin>encrypt.bat input="!!evAm9900" password="XnFG
+/duDbEtP`KI@S1uIHALbgP;HJ8aoEmK`>hT0ux;3Ok0]qM2T<Mmmm93?==Vc"
+
+----ENVIRONMENT-----------------
+
+Runtime: Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 24.60-b09
+
+
+
+----ARGUMENTS-------------------
+
+input: !!evAm9900
+password: XnFG/duDbEtP`KI@S1uIHALbgP;HJ8aoEmK`>hT0ux;3Ok0]qM2T<Mmmm93?==Vc
+
+
+
+----OUTPUT----------------------
+
+y1Ug2h5AzG24eWM8XathGMM73ZIIaya+
+
+
+//******************** THIS IS APPLICATION-SPECIFIC PASSWORD !!! *************
+// ON MY LAPTOP, MAY HAVE TO ADJUST ON GBO SERVER !
+
+C:\Users\Eva\java\jasypt-1.9.2\bin>encrypt.bat input="juymxilpdybgosyg" password
+="XnFG/duDbEtP`KI@S1uIHALbgP;HJ8aoEmK`>hT0ux;3Ok0]qM2T<Mmmm93?==Vc"
+
+----ENVIRONMENT-----------------
+
+Runtime: Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 24.60-b09
+
+
+
+----ARGUMENTS-------------------
+
+input: juymxilpdybgosyg
+password: XnFG/duDbEtP`KI@S1uIHALbgP;HJ8aoEmK`>hT0ux;3Ok0]qM2T<Mmmm93?==Vc
+
+
+
+----OUTPUT----------------------
+
+aJYRWOZ1C3LjsiJh/2g3HRV6kcKSmnsHfTw/V//SsSs=
+
+
+
+C:\Users\Eva\java\jasypt-1.9.2\bin>
+
+==================================================
+//******************** THIS IS APPLICATION-SPECIFIC PASSWORD ENCODED WITH DEV application key *************
+// encrypt.bat input="dremxswblsuqsrvi" password="XnFG/duDbEtP`KI@S1uIHALbgP;HJ8aoEmK`>hT0ux;3Ok0]qM2T<Mmmm93?==Vc"
+
+
+C:\Users\Eva\java\jasypt-1.9.2\bin>encrypt.bat input="dremxswblsuqsrvi" password
+="XnFG/duDbEtP`KI@S1uIHALbgP;HJ8aoEmK`>hT0ux;3Ok0]qM2T<Mmmm93?==Vc"
+
+
+----ENVIRONMENT-----------------
+
+Runtime: Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 25.60-b23
+
+
+
+----ARGUMENTS-------------------
+
+input: dremxswblsuqsrvi
+password: XnFG/duDbEtP`KI@S1uIHALbgP;HJ8aoEmK`>hT0ux;3Ok0]qM2T<Mmmm93?==Vc
+
+
+
+----OUTPUT----------------------
+
+XdD0tftgEsz+X5SlU6fYb9EJCVfMfPwLjjQGCYr+lGo=
+
+
+
+//*********************** ENCRYPTION USING PRODUCTION KEY ******************************
+// encrypt.bat input="gbowebmestre" password="F7Us5KHdPuVD1<j=Ad_nx_6IKTz]4:W/HS0tNQY8Nh3o65]3/jMRRWOIVPeviFz?"
+// encrypt.bat input="dremxswblsuqsrvi" password="F7Us5KHdPuVD1<j=Ad_nx_6IKTz]4:W/HS0tNQY8Nh3o65]3/jMRRWOIVPeviFz?"
+
+
+C:\Users\Eva\java\jasypt-1.9.2\bin>encrypt.bat input="gbowebmestre" password="F7
+Us5KHdPuVD1<j=Ad_nx_6IKTz]4:W/HS0tNQY8Nh3o65]3/jMRRWOIVPeviFz?"
+
+C:\Users\Eva\java\jasypt-1.9.2\bin>ECHO OFF
+
+----ENVIRONMENT-----------------
+
+Runtime: Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 25.60-b23
+
+
+
+----ARGUMENTS-------------------
+
+input: gbowebmestre
+password: F7Us5KHdPuVD1<j=Ad_nx_6IKTz]4:W/HS0tNQY8Nh3o65]3/jMRRWOIVPeviFz?
+
+
+
+----OUTPUT----------------------
+
+6MF7nvuuhVk23wl6MtOrGiG/WWjTSR5c
+
+
+
+
+C:\Users\Eva\java\jasypt-1.9.2\bin>encrypt.bat input="dremxswblsuqsrvi" password
+="F7Us5KHdPuVD1<j=Ad_nx_6IKTz]4:W/HS0tNQY8Nh3o65]3/jMRRWOIVPeviFz?"
+
+C:\Users\Eva\java\jasypt-1.9.2\bin>ECHO OFF
+
+----ENVIRONMENT-----------------
+
+Runtime: Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 25.60-b23
+
+
+
+----ARGUMENTS-------------------
+
+input: dremxswblsuqsrvi
+password: F7Us5KHdPuVD1<j=Ad_nx_6IKTz]4:W/HS0tNQY8Nh3o65]3/jMRRWOIVPeviFz?
+
+
+
+----OUTPUT----------------------
+
+Huq9G+6o7e2yPMDGyNIjd6TMD9eimTTKtU4gVXtIgT0=
+
+
+
+C:\Users\Eva\java\jasypt-1.9.2\bin>
+//*********************** ENCRYPTION USING PRODUCTION KEY ******************************
+// WE re-encrypt using truncated production key (as is on server)
+// encrypt.bat input="gbowebmestre" password="F7Us5KHdPuVD1<j=Ad_nx_6IKTz]4:W/HS0tNQY8Nh3o65]3/jM"
+// encrypt.bat input="dremxswblsuqsrvi" password="F7Us5KHdPuVD1<j=Ad_nx_6IKTz]4:W/HS0tNQY8Nh3o65]3/jM"
+
+C:\Users\Eva\java\jasypt-1.9.2\bin>encrypt.bat input="gbowebmestre" password="F7
+Us5KHdPuVD1<j=Ad_nx_6IKTz]4:W/HS0tNQY8Nh3o65]3/jM"
+
+----ARGUMENTS-------------------
+input: gbowebmestre
+password: F7Us5KHdPuVD1<j=Ad_nx_6IKTz]4:W/HS0tNQY8Nh3o65]3/jM
+
+----OUTPUT----------------------
+qXteuoPZ47MbZAzJhSSL7uhFHiqV4GCc
+
+C:\Users\Eva\java\jasypt-1.9.2\bin>encrypt.bat input="dremxswblsuqsrvi" password
+="F7Us5KHdPuVD1<j=Ad_nx_6IKTz]4:W/HS0tNQY8Nh3o65]3/jM"
+
+----ARGUMENTS-------------------
+input: dremxswblsuqsrvi
+password: F7Us5KHdPuVD1<j=Ad_nx_6IKTz]4:W/HS0tNQY8Nh3o65]3/jM
+
+----OUTPUT----------------------
+GshNx3NvR/Y7Yjg96hYAtVjlv3l1rmXhpwD/XFN2q48=
+

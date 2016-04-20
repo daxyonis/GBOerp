@@ -1,0 +1,64 @@
+@(commande : Commande)
+
+@stylesheets = {
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/listesoum.css")">
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/suivi.css")">
+}
+ 
+@javascripts = {	
+}
+
+@main("Suivi de la commande", stylesheets, javascripts){
+
+	<h2>Suivi de la commande #@commande.getCustomerOrder()</h2>
+	
+	<table class="table" id="tableSuivi">
+		<tbody>
+			<tr>
+				<td class="gras">Projet</td>
+				<td>@commande.getQuickNote()</td>		
+			</tr>
+			<tr>
+				<td class="gras">Statut</td>
+				@defining(if(commande.getStatus() == "A") "success" else "danger") { color =>
+    				<td class="@color">@commande.getStatusText()</td>
+				}				    			          							
+			</tr>
+			<tr>
+				<td class="gras">Prix av. taxes</td>
+				<td>@commande.getFormattedAmountNoTax()$</td>
+			</tr>
+			<tr>
+				<td class="gras">Livré à</td>
+				<td>@commande.getShipToCustomerName()</td>
+			</tr>
+			<tr>
+				<td class="gras">Date Livraison</td>
+				<td>@commande.getDateDelivery()</td>
+			</tr>
+			<tr>
+				<td class="gras">Vendeur</td>
+				<td>@commande.getSalesmanFullName()</td>
+			</tr>
+			<tr>
+				<td class="gras">Rapports disponibles</td>
+				<td>
+					<ul class="simpleList">
+			            <li><a target=_blank href="http://sgboerp01/ReportServer?%2fGeniusReports%2fCustomerOrder%2f1+-+BO_DossierProd+(G%c3%a9n%c3%a9ral)&pCode=@commande.getCustomerOrder()">Visualiser le dossier de production</a></li>                
+			            <li><a target=_blank href="http://sgboerp01/ReportServer?%2fGeniusReports%2fCustomerOrder%2fBO_SuiviCommande&pCode=@commande.getCustomerOrder()">Visualiser l'avancement des jobs</a></li>
+			            <li><a target=_blank href="http://sgboerp01/ReportServer?%2fGeniusReports%2fCustomerOrder%2fBO_CustomerOrder&pCode=@commande.getCustomerOrder()">Visualiser la commande</a></li>                
+						@if(commande.getStatus() == "H"){                               
+						<li><a target=_blank href="http://sgboerp01/ReportServer?%2fGeniusReports%2fCustomerOrder%2fBO_FacturesExpeditions&pCode=@commande.getCustomerOrder()">Visualiser la(les) facture(s) et expédition(s)</a></li>
+					    <li><a target=_blank href="http://sgboerp01/ReportServer?%2fGeniusReports%2fCustomerOrder%2fBO_JobCost&pCode=@commande.getCustomerOrder()">Visualiser le job cost</a></li>
+					    }
+		        	</ul>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	      
+
+           
+
+}

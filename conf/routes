@@ -1,0 +1,120 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index()
+# Test for exceptions page
+GET     /test                       controllers.Application.test()
+# Javascript router
+GET     /javascriptRoutes.js        controllers.Application.javascriptRoutes()
+
+GET     /login                      controllers.SecurityController.login()
+POST    /authenticate               controllers.SecurityController.authenticate()
+POST    /logout                     controllers.SecurityController.logout()
+GET     /user                       controllers.UserController.ulist()
+GET     /user/new                   controllers.UserController.newUser()
+GET     /user/:id                   controllers.UserController.edit(id: Int)
+DELETE  /user/:id                   controllers.UserController.remove(id: Int)
+POST    /user/                      controllers.UserController.save()
+GET     /moncompte                  controllers.MonCompte.account()
+GET     /moncompte/mp               controllers.MonCompte.pwd()
+POST    /moncompte/mp               controllers.MonCompte.pwdSave()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+
+#*********************************************************************************
+#          Application API endpoints
+
+GET     /api/accessoires/types/prod/:id       controllers.Accessoires.findTypesForFlexible(id: Int)
+GET     /api/accessoires/type/:pType          controllers.Accessoires.find(pType: String)
+GET     /api/activites/infographie            controllers.Activites.findInfographie()
+GET     /api/activites/manipulation           controllers.Activites.findManipulation()
+GET     /api/activites/laminage               controllers.Activites.findLaminage()
+GET     /api/clients                          controllers.Clients.findAll()
+GET     /api/finitions/flex/cat/:cat          controllers.Finitions.findForFlexibleCategory(cat: String)
+GET     /api/finitions/                       controllers.Finitions.findAll()
+PUT     /api/finitions/	                      controllers.Finitions.save()
+POST    /api/finitions/                       controllers.Finitions.add()
+DELETE  /api/finitions/                       controllers.Finitions.remove()
+GET     /api/flexs                            controllers.Flexibles.findAll()
+GET     /api/flexDTOs                         controllers.Flexibles.findAllDTO()
+GET     /api/laminages/cat/:cat               controllers.Laminages.findForCategory(cat: String)
+GET     /api/printers/flex/:id                controllers.Imprimantes.findForFlexible(id: Int)
+GET     /api/printers/                        controllers.Imprimantes.findAll()
+PUT     /api/printers/	                      controllers.Imprimantes.save()
+POST    /api/printers/                        controllers.Imprimantes.add()
+DELETE  /api/printers/                        controllers.Imprimantes.remove()
+GET     /api/reps                             controllers.Reps.findAll()
+GET     /api/soumissions/:no                  controllers.Soumissions.find(no: Int)
+GET     /api/soumissions/data/                controllers.Soumissions.getData(search : String ?= "", sort: String ?= "suite", order: String ?= "desc", limit: Int ?= 20, offset: Int ?= 1, rep: String ?= "NA", statut: Int ?= 0, numero: String ?="", dateDebut: String ?= "", dateFin: String ?= "")
+GET     /api/statuts                          controllers.Statuts.findAll()
+
+# For use with Backbone sync
+GET     /api/soum/:noSoum/items               controllers.app.AppItems.readAllForSoum(noSoum: Int)
+POST    /api/soum/:noSoum/items               controllers.app.AppItems.create(noSoum: Int)
+GET     /api/soum/:noSoum/items/:noItem       controllers.app.AppItems.read(noSoum: Int, noItem: Int) 
+PUT     /api/soum/:noSoum/items/:noItem       controllers.app.AppItems.update(noSoum: Int, noItem: Int)
+DELETE  /api/soum/:noSoum/items/:noItem       controllers.app.AppItems.delete(noSoum: Int, noItem: Int)
+
+# AppItems
+GET     /api/item/void                        controllers.app.AppItems.voidItem()
+
+# AppSoumissions
+GET     /api/soum/data/                       controllers.app.AppSoumissions.getData(search : String ?= "", sort: String ?= "suite", order: String ?= "desc", limit: Int ?= 20, offset: Int ?= 1, rep: String ?= "NA", statut: Int ?= 0, numero: String ?="", dateDebut: String ?= "", dateFin: String ?= "")
+GET     /api/soum/:noSoum/copy                controllers.app.AppSoumissions.copy(noSoum: Int, withItems: Boolean ?= true)
+DELETE  /api/soum/:noSoum                     controllers.app.AppSoumissions.delete(noSoum: Int)
+GET     /api/soum/:suite/newVersion          controllers.app.AppSoumissions.newVersion(suite: Int, itemsVersion: String ?= "")
+
+#*********************************************************************************
+
+# Soumissions
+GET     /soumissions/               controllers.Soumissions.list()
+GET     /soumissions/search/	    controllers.Soumissions.search(value, field, dateDebut, dateFin, selectClient, selectRepresentant)
+GET     /soumissions/:no            controllers.Soumissions.render(no: Int, out="client")
+GET     /soumissions/dossier/:no    controllers.Soumissions.order(no: Int)
+
+# AppSoumissions
+GET     /appsoumissions/            controllers.app.AppSoumissions.list()
+GET     /appsoumission/new          controllers.app.AppSoumissions.newSoum()
+GET     /appsoumission/:no          controllers.app.AppSoumissions.view(no : Int)
+GET     /appsoumission/:no/entete   controllers.app.AppSoumissions.viewEntete(no : Int)
+POST    /appsoumission/:no/entete   controllers.app.AppSoumissions.saveEntete(no : Int)
+GET     /appsoumission/:no/items    controllers.app.AppSoumissions.viewItems(no : Int)
+
+# Detail d'un item
+GET     /item/                      controllers.Items.list()
+GET     /item/new                   controllers.Items.newItem()
+POST    /item/                      controllers.Items.save()
+GET     /item/search/               controllers.Items.search(value, field, dateDebut, dateFin, selectClient, selectRepresentant)
+GET     /item/:noSoum               controllers.Items.find(noSoum: Int)
+
+# Detail des Mes Items
+GET     /mesitems/                  controllers.MesItemsCtrl.show()
+DELETE  /mesitems/                  controllers.MesItemsCtrl.removeAll()
+DELETE  /mesitems/:no               controllers.MesItemsCtrl.remove(no: Int)
+GET     /mesitems/recherche         controllers.MesItemsCtrl.choose()
+POST    /mesitems/recherche         controllers.MesItemsCtrl.add()
+GET     /mesitems/confirm/          controllers.MesItemsCtrl.confirm(cible: Int ?= 0)
+POST    /mesitems/confirm/          controllers.MesItemsCtrl.copy()
+
+# Flexibles
+GET     /flex/                      controllers.Flexibles.list()
+GET     /flex/new                   controllers.Flexibles.newFlexible()
+GET     /flex/styles                controllers.Flexibles.getStyles()
+GET     /flex/:no                   controllers.Flexibles.edit(no: Int)
+DELETE  /flex/:no                   controllers.Flexibles.remove(no: Int)
+POST    /flex/                      controllers.Flexibles.save()
+POST    /flex/styles/               controllers.Flexibles.saveStyle()
+DELETE  /flex/styles/               controllers.Flexibles.removeStyle(row, col)
+
+# Soumission Rapide Flexible
+GET     /soumflex/                  controllers.SoumRapideFlexible.show()
+POST    /soumflex/                  controllers.SoumRapideFlexible.save()
+
+# Imprimantes
+GET     /imprimantes/               controllers.Imprimantes.list()
+
+# Finitions
+GET    /finitions/                  controllers.Finitions.list()

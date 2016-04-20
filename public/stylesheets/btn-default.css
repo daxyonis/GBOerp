@@ -1,0 +1,123 @@
+/* On a copié ici les directives css de btn-gray de http://bootswatch.com/spacelab/bootstrap.css que l'on a modifié pour un btn-default gris pale */
+.btn-default {
+  color: #555;
+  background-color: #eee;
+  border-color: #eee;
+}
+.btn-default:focus,
+.btn-default.focus {
+  color: #555;
+  background-color: #ccc;
+  border-color: #bbb;
+}
+.btn-default:hover {
+  color: #555;
+  background-color: #ccc;
+  border-color: #bbb;
+}
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+  color: #555;
+  background-color: #ccc;
+  border-color: #bbb;
+}
+.btn-default:active:hover,
+.btn-default.active:hover,
+.open > .dropdown-toggle.btn-default:hover,
+.btn-default:active:focus,
+.btn-default.active:focus,
+.open > .dropdown-toggle.btn-default:focus,
+.btn-default:active.focus,
+.btn-default.active.focus,
+.open > .dropdown-toggle.btn-default.focus {
+  color: #555;
+  background-color: #ccc;
+  border-color: #bbb;
+}
+.btn-default:active,
+.btn-default.active,
+.open > .dropdown-toggle.btn-default {
+  background-image: none;
+}
+.btn-default.disabled:hover,
+.btn-default[disabled]:hover,
+fieldset[disabled] .btn-default:hover,
+.btn-default.disabled:focus,
+.btn-default[disabled]:focus,
+fieldset[disabled] .btn-default:focus,
+.btn-default.disabled.focus,
+.btn-default[disabled].focus,
+fieldset[disabled] .btn-default.focus {
+  background-color: #eee;
+  border-color: #eee;
+}
+.btn-default .badge {
+  color: #888;
+  background-color: #ffffff;
+}
+
+.bidon {
+    color : #6d7070;
+    background-color: #3d3f3f;
+}
+
+/************************** This is the original settings from SPACELAB */
+/*
+.btn-default {
+  background-image: -webkit-linear-gradient(#ddd, #eee 50%, #ddd);
+  background-image: -o-linear-gradient(#6d7070, #eee 50%, #3d3f3f);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#6d7070), color-stop(50%, #eee), to(#3d3f3f));
+  background-image: linear-gradient(#6d7070, #eee 50%, #3d3f3f);
+  background-repeat: no-repeat;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff6d7070', endColorstr='#ff3d3f3f', GradientType=0);
+  -webkit-filter: none;
+          filter: none;
+  border: 1px solid #ccc;
+}
+*/
+/*
+.btn-default:hover {
+  background-image: -webkit-linear-gradient(#636565, #3d3f3f 50%, #333434);
+  background-image: -o-linear-gradient(#636565, #3d3f3f 50%, #333434);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#636565), color-stop(50%, #3d3f3f), to(#333434));
+  background-image: linear-gradient(#636565, #3d3f3f 50%, #333434);
+  background-repeat: no-repeat;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff636565', endColorstr='#ff333434', GradientType=0);
+  -webkit-filter: none;
+          filter: none;
+  border: 1px solid #242525;
+}
+****************************************/
+
+/*****************************************************************************/
+/*NOTE: the following have been generated using http://cssgradientbutton.com/ */
+.btn-default{
+ border:1px solid #808080; 
+ text-shadow: -1px -1px 0 rgba(255,255,255,0.3);
+ color: #555555;
+ background-color: #EEEEEE; 
+ background-image: -webkit-gradient(linear, left top, left bottom, from(#EEEEEE), to(#9E9E9E));
+ background-image: -webkit-linear-gradient(top, #EEEEEE, #9E9E9E);
+ background-image: -moz-linear-gradient(top, #EEEEEE, #9E9E9E);
+ background-image: -ms-linear-gradient(top, #EEEEEE, #9E9E9E);
+ background-image: -o-linear-gradient(top, #EEEEEE, #9E9E9E);
+ background-image: linear-gradient(to bottom, #EEEEEE, #9E9E9E);
+ filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#EEEEEE, endColorstr=#9E9E9E);
+ -webkit-filter: none;
+          filter: none;
+}
+.btn-default:hover{
+ border:1px solid #bbbbbb;
+ background-color: #d5d5d5; 
+ background-image: -webkit-gradient(linear, left top, left bottom, from(#d5d5d5), to(#858585));
+ background-image: -webkit-linear-gradient(top, #d5d5d5, #858585);
+ background-image: -moz-linear-gradient(top, #d5d5d5, #858585);
+ background-image: -ms-linear-gradient(top, #d5d5d5, #858585);
+ background-image: -o-linear-gradient(top, #d5d5d5, #858585);
+ background-image: linear-gradient(to bottom, #d5d5d5, #858585);
+ filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#d5d5d5, endColorstr=#858585);
+ webkit-filter: none;
+          filter: none;
+}
+/*****************************************************************************/

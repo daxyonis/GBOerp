@@ -1,0 +1,11 @@
+# Ignore Play! working directory #
+.settings/
+.svn/
+bin/
+logs/
+/modules
+/project/target
+/project/project
+/sql
+/target
+.cache*

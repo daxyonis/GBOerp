@@ -1,0 +1,53 @@
+body {
+  padding-top: 55px;
+}
+
+div.container {
+	width:98%;
+}
+
+div.alert-container{
+	margin-top: 20px;
+}
+.mainContent {    
+    border-bottom: 1px solid #ccc;
+    min-height: 600px;
+}
+
+div.btn-group{
+  float:right;
+  padding-bottom:10px;
+}
+
+button.btn.btn-default.right-btn{
+  float:right;
+}
+
+/*
+Serie de classes qui representent des fractions sur 24 unites, afin
+d'ajuster la taille des cellules dans la table des items.
+Ex : w1 = 1/24 = 0.04166666...
+     w9 = 9/24 = 0.375, etc
+*/
+th.w1, td.w1{
+	width: 4%;	
+}
+
+th.w2, td.w2{
+	width: 4%;	
+}
+
+th.w4, td.w4{
+	width: 8%;
+}
+
+th.centre{
+	text-align: center;
+}
+td.aDroite{ 
+	text-align: right;
+}
+
+option.smTxt {
+	font-size: small;
+}

@@ -1,0 +1,26 @@
+body {
+  padding-top: 55px;
+}
+
+.info {display : none;}
+.error {color : red; }
+.gras { font-weight: bold; }
+
+div.container {
+	width:98%;
+}
+
+div.alert-container{
+	margin-top: 20px;
+}
+.mainContent {    
+    border-bottom: 1px solid #ccc;
+    min-height: 600px;
+}
+
+select { width: 100%; }
+
+
+input.date-picker{ display: inline; width: 50%;}
+input#dateEntre{ width: 50%; }
+

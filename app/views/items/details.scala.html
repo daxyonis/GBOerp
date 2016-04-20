@@ -1,0 +1,32 @@
+@(itemForm: Form[Item])
+@import helper._
+
+@stylesheets = {
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+}
+ 
+@javascripts = { 
+}
+
+@main("Item", stylesheets, javascripts) {
+	<h1>Détail de l'item</h1>
+	@helper.form(routes.Items.save()) {
+		@CSRF.formField
+		<fieldset>
+		<legend>Item (@itemForm("NomItem").valueOr("Nouveau"))</legend>		
+		@helper.inputText(itemForm("NoItem"), '_label -> "No Item", 'disabled -> "disabled")
+		<input type="hidden" value=@itemForm("NoItem").valueOr("") name="noItem" />
+		@helper.inputText(itemForm("NomItem"),'_label -> "Nom")
+		@helper.textarea(itemForm("Description"), '_label -> "Description")
+		@helper.inputText(itemForm("Quantite"), '_label -> "Quantité")
+		@helper.inputText(itemForm("Hauteur"), '_label -> "Hauteur (po)")
+		@helper.inputText(itemForm("Largeur"), '_label -> "Largeur (po)")
+		@helper.inputText(itemForm("SourceProd"), '_label -> "Source prod")
+		@helper.inputText(itemForm("FraisVariables"), '_label -> "Frais variables")
+		@helper.inputText(itemForm("FraisInstallation"), '_label -> "Frais d'installation")
+		@helper.inputText(itemForm("PrixFab"), '_label -> "Prix de fabrication")
+		</fieldset>		
+		<input type="submit" class="btn btn-primary" value="Sauvegarder">		
+		<a class="btn" href="@routes.Items.list()">Annuler</a>
+	}
+}

@@ -1,0 +1,52 @@
+<!--    <div class="tab-pane mat" id="mat{{id}}"> -->
+          <div class="form-group">
+                <label class="col-md-2 control-label" for="matType{{id}}">Type</label>
+                <div class="col-md-2">
+                <select class="form-control mat matType" id="matType{{id}}" name="items[{{id}}].matType" > 
+                    <option selected value="flexible">Flexible</option>                    
+                </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="matCat{{id}}">Support</label>
+                <div class="col-md-2">
+                <select class="form-control mat matCat"  id="matCat{{id}}" name="items[{{id}}].matCat" >  
+                    <!-- HANDLEBARS TEMPLATE for Categorie Materiel -->
+                    {{#each catArr}}
+                    <option value="{{categorie}}">{{categorie}}</option>
+                    {{/each}}                    
+                    <!-- END OF TEMPLATE -->
+                </select>                
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="matProd{{id}}">Produit</label>
+                <div class="col-md-4">                    
+                    <select class="form-control mat matProd"  id="matProd{{id}}" name="items[{{id}}].matProd" >    
+                        
+                    </select>
+                </div>
+            </div> 
+            <div class="form-group" id="MatDescription{{id}}" >
+                
+            </div>            
+              
+            <div class="form-group">
+                <div class="col-md-10 col-md-offset-2">
+                    <table class="table resumeTable" id="matResume{{id}}" >
+                        <thead><th>Prix coûtant ($/pi<span class="exp">2</span>)</th>
+                            <th>Marge de profit</th>
+                            <th>Prix vendant ($/pi<span class="exp">2</span>)</th>
+                            <th>Prix Total</th>
+                        </thead>
+                        <tbody>
+                            <td id="matCoutant{{id}}"></td>
+                            <td id="matMarge{{id}}" class="profit-margin"></td>
+                            <td id="matVendant{{id}}"></td>
+                            <td id="matPrixTotal{{id}}"></td>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+      <!-- </div> <!-- end of Mat section -->

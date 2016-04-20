@@ -1,0 +1,53 @@
+<!-- <div class="tab-pane" id="lam{{id}}"> -->
+             <div class="form-group">
+                <div class="col-md-12">
+                    <table class="table resumeTable" id="resumeTableLam{{id}}">
+                        <thead>
+                            <th>Type</th>
+                            <th>Taux / Coût</th>
+                            <th>Temps / quantité</th>
+                            <th>Sous-total</th>
+                            <th>Marge de profit</th>
+                            <th>Total</th>         
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><select class="lamSelectType" id="lamSelectType{{id}}" name="items[{{id}}].lamSelectType"></select>                                    
+                                </td>
+                                <td id="lamDesc{{id}}"></td>      
+                                
+                                       
+                                <td colspan="4"></td>              
+                            </tr>
+                            <tr>
+                            	<td>Matériel</td>
+                                <td id="lamCout{{id}}"></td>
+                                <td id="lamAire{{id}}"></td>
+                                <td id="lamMatSsTotal{{id}}"></td>
+                                <td class="profit-margin"></td>                                                              
+                                <td id="lamMatTotal{{id}}"></td>
+                            </tr>
+							<tr>
+								<td>Main d'oeuvre</td>
+								<td id="lamTaux{{id}}"></td>
+								<td id="lamTempsHr{{id}}"></td>
+								<td id="lamMoSsTotal{{id}}"></td>
+								<td class="profit-margin"></td> 
+								<td id="lamMoTotal{{id}}"></td>
+							</tr>
+                        </tbody>
+                        <tfoot>
+                            <th></th>
+                            <th>Temps total:</th>
+                            <th id="lamTempsHrMin{{id}}"></th>
+                            <th id="lamCoutantTotal{{id}}"></th>
+                            <th>Prix total:</th>
+                            <th id="lamTotal{{id}}"></th>
+                        </tfoot>
+                    </table>
+                    <!--  Here put hidden inputs to send Laminage data to server -->
+                    <input type="hidden" id="lamTaux" name="items[{{id}}].lamTaux">
+                    <input type="hidden" id="lamTempsHr" name="items[{{id}}].lamTempsHr">                    
+                 </div>
+             </div>
+<!-- </div>  <!-- end of section Laminage -->

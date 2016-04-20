@@ -1,0 +1,14 @@
+<h1>Soumission 
+    <% if (typeof suite != 'undefined') { %> <%= suite %>-<%= version %> <% } %>
+    <% if (typeof noSoumission != 'undefined') { %> (<%= noSoumission %>) <% } else { %> (Nouvelle) <% } %>
+         
+</h1>
+<% if (typeof noSoumission != 'undefined') { %>    
+    <table class="table">
+        <tr><td>Vendeur</td><td><%= rep.description1 %></%></td></tr>
+        <tr><td>Client</td><td><%= client.nom %></%></td></tr>
+        <tr><td>Projet</td><td><%= projet %></%></td></tr>
+        <tr><td>Statut</td><td><%= texteStatut %></%></td></tr>
+        <tr><td>Dossier</td><td><%= noDossier %></%></td></tr>
+    </table>
+<% } %>

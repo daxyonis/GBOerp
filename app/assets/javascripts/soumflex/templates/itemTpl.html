@@ -1,0 +1,95 @@
+<!-- HANDLEBARS TEMPLATE for one item -->   
+		<!-- Nav tabs -->
+		<ul class="nav nav-tabs" role="tablist">
+		  <li class="active"><a href="#item{{id}}" role="tab" data-toggle="tab">Description Item</a></li>
+		  <li><a href="#mat{{id}}" role="tab" data-toggle="tab">Matériel</a></li>          
+		  <li><a href="#imp{{id}}" role="tab" data-toggle="tab">Imprimante</a></li>
+		  <li><a href="#inf{{id}}" role="tab" data-toggle="tab">Infographie</a></li>
+		  <li><a href="#mo{{id}}" role="tab" data-toggle="tab">Main d'oeuvre</a></li>
+		  <li><a href="#fini{{id}}" role="tab" data-toggle="tab">Finition</a></li>
+		  <li><a href="#lam{{id}}" role="tab" data-toggle="tab">Laminage</a></li>
+		</ul>
+		<!-- Tab panes -->
+        <div class="tab-content">
+            <a name="item{{_id}}"></a>
+            <p class="itemNom" id="itemNom{{id}}">Item {{_id}}</p>
+            <div id="itemErrorMsg"></div>
+            
+          <div class="tab-pane active item" id="item{{id}}" >              
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="itemQte{{id}}">Quantité</label>
+                <div class="col-md-1">
+                <input type="text" class="form-control item itemQte" id="itemQte{{id}}" name="items[{{id}}].qte"  value="{{qte}}">
+                </div>
+                <label class="col-md-offset-1 col-md-2 control-label" for="itemArea{{id}}">Superficie (pi<span class="exp">2</span>)</label>
+                <div class="col-md-1">
+                <input type="text" class="form-control itemArea" id="itemArea{{id}}" name="itemArea{{id}}"  readonly value="">
+                </div>
+            </div>            
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="itemHaut{{id}}">Hauteur (po)</label>
+                <div class="col-md-1">
+                <input type="text" class="form-control item itemHaut" id="itemHaut{{id}}" name="items[{{id}}].haut"  value="">
+                </div>
+                <label class="col-md-offset-1 col-md-2 control-label" for="itemPerte{{id}}">Perte</label>
+                <div class="col-md-1">
+                <select class="form-control item itemPerte" id="itemPerte{{id}}" name="items[{{id}}].perte" >                  
+                    <option selected value="10">10%</option>
+                    <option value="20">20%</option>
+                    <option value="30">30%</option>
+                </select>
+                </div>
+            </div> 
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="itemLarg{{id}}">Largeur (po)</label>
+                <div class="col-md-1">
+                <input type="text" class="form-control item itemLarg" id="itemLarg{{id}}" name="items[{{id}}].larg"  value="">
+                </div>
+                <label class="col-md-offset-1 col-md-2 control-label" for="itemAreaPerte{{id}}">Superficie avec perte(pi<span class="exp">2</span>)</label>
+                <div class="col-md-1">
+                <input type="text" class="form-control itemAreaPerte" id="itemAreaPerte{{id}}"  readonly value="">
+                </div>
+            </div>
+            <div class= "form-group">
+            	<label class="col-md-2 control-label" for="itemRV{{id}}">Recto/Verso</label>
+                <div class="col-md-2">
+                <select class="form-control item itemRV" id="itemRV{{id}}" name="items[{{id}}].rv" >                     
+                    <option selected value=""></option>
+                    <option value="Recto">Recto</option>
+                    <option value="Verso">Verso</option>
+                    <option value="R/V">R/V</option>
+                </select>
+                </div>
+            </div> 
+          </div> <!-- end of Item section -->	                     
+</div> <!-- end of Tab content -->		 
+<div class="col-md-12">
+    <p class="text-info bg-info">Résumé Item{{_id}}</p>
+    <table class="table resumeTable" id="resumePrixItem">
+        <thead>
+            <th>Coûtant item</th>
+            <th>Vendant item</th>
+            <th>Commission</th>                    
+            <th>Prix au pied carré</th>
+            <th>Estimé item</th>
+            <th>Montant des ventes</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="itemCoutantTotal"></td>
+                <td id="itemVendantTotal"></td>
+                <td class="itemCommission"></td>                
+                <td id="itemPrixPiCar"></td>
+                <td id="itemPrixTotal"></td>
+                <td>
+                    <input type="text" class="form-control centered montantVente" size=5 placeholder="Vente ($)" required name="items[{{id}}].montantVente" id="montantVente{{id}}">
+                </td>
+            </tr>
+        </tbody>               
+    </table>            
+ </div>  
+ <div class="row">
+     <div class="col-md-1 col-md-offset-10">
+     <button type="button" class="btn btn-sm btn-default btnRetirerItem">Retirer cet item<span class="glyphicon glyphicon-remove"></span></button>
+     </div>
+ </div>

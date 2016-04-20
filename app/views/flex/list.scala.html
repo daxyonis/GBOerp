@@ -1,0 +1,152 @@
+@(flexs: List[Flexible])
+	
+	<style scoped>
+	 th, td {
+	 	text-align: center;
+	 	vertical-align: middle;
+	 	font-size: xx-small;
+	 	}
+	 td.TDcenter{
+	 	text-align: center;
+	 	}
+	 td.TDleft{
+	 	text-align: left;
+	 	}
+	 td.TDright{
+	 	text-align: right;
+	 	}
+	 td.TDbold{
+	 	font-weight: bold;
+	 	}
+	 td.TDitalic{
+	 	font-style: italic;
+	 	}
+	 
+	</style>	
+	
+	<h2>Liste des flexibles</h2>		
+	
+	<div id="toolbar" class="btn-toolbar" role="toolbar">
+		<div class="btn-group" role="group">
+		    <a id="nouveauFlex" class="btn btn-default" href="@routes.Flexibles.newFlexible()" 
+		       data-toggle="tooltip" data-placement="right" title="Ajouter un flexible">
+		        <i class="glyphicon glyphicon-plus"></i> Nouveau
+		    </a>
+	    </div>
+	    <div class="btn-group" role="group">
+		    <button id="btBold" class="btn btn-default" role="button" data-toggle="tooltip" 
+		     data-placement="right" title="Gras">
+		    	<i class="glyphicon glyphicon-bold"></i>
+		    </button>
+		    <button id="btItal" class="btn btn-default" role="button" data-toggle="tooltip" 
+		     data-placement="right" title="Italique">
+		    	<i class="glyphicon glyphicon-italic"></i>
+		    </button>
+		 </div>
+		 <div class="btn-group" role="group">
+		    <button id="btAlignLeft" class="btn btn-default" role="button" data-toggle="tooltip" 
+		     data-placement="right" title="Gauche">
+		    	<i class="glyphicon glyphicon-align-left"></i>
+		    </button>
+		    <button id="btAlignCenter" class="btn btn-default" role="button" data-toggle="tooltip" 
+		     data-placement="right" title="Centré">
+		    	<i class="glyphicon glyphicon-align-center"></i>
+		    </button>
+		    <button id="btAlignRight" class="btn btn-default" role="button" data-toggle="tooltip" 
+		     data-placement="right" title="Droite">
+		    	<i class="glyphicon glyphicon-align-right"></i>
+		    </button>
+		</div>
+		
+		<div class="btn-group" role="group">
+			<button id="btBgColor" class="btn btn-default" role="button" data-toggle="tooltip" 
+			 data-placement="right" title="Couleur du fond">
+				<i class="glyphicon glyphicon-tint"></i>
+		    </button>
+			<input type="text" id="colorPck2" style="height: 34px;" />
+		</div>
+		<div class="btn-group" role="group">			
+			<button id="btColor" class="btn btn-default" role="button" data-toggle="tooltip" 
+			 data-placement="right" title="Couleur du texte">
+				<i class="glyphicon glyphicon-font"></i>
+		    </button>
+			<input type="text" id="colorPck" style="height: 34px;" />
+		</div>
+		<div class="btn-group" role="group">
+			<button id="btClear" class="btn btn-default" role="button" data-toggle="tooltip" 
+			 data-placement="right" title="Enlever style">
+				<i class="glyphicon glyphicon-remove"></i>
+		    </button>
+		</div>
+		<div class="btn-group" role="group">
+			<button id="btPrint" class="btn btn-default" role="button" data-toggle="tooltip" 
+			 data-placement="right" title="Imprimer la table">
+				<i class="glyphicon glyphicon-print"></i>
+		    </button>
+		</div>
+	</div>
+	
+	@if(flexs.isEmpty()) {
+		<p>Aucun produit trouvé</p>
+		} else {			
+		<table id="flexTable" class="table table-bordered table-condensed" 
+		       data-toggle="table" data-height="500" 
+		       data-search="true"
+		       data-show-columns="true"       		        
+       		   data-toolbar="#toolbar"
+       		   data-sort-name = "categorie"
+       		   data-sort-order = "asc">
+		<thead>
+			<tr>			
+				<th class="noprint"></th>
+				<th data-field="categorie" data-sortable="true">Catégorie</th>
+				<th>Utilité</th>
+				<th>Stock</th>
+				<th>Fiche</th>
+				<th>Distributeur</th>
+				<th>Nom de Produit</th>
+				<th>No Item Genius</th>
+				<th>Epaisseur</th>				
+				<th>Format</th>
+				<th>Coût</th>				
+				<th>   Description   </th>
+				<th>Caractéristiques</th>
+				<th>Int/Ext</th>
+				<th>Support</th>
+				<th>Impression</th>
+				<th>Commentaire</th>
+				<th class="noprint"></th>
+			</tr>
+		</thead>
+		<tbody>
+			@for(flex <- flexs) {
+				<tr id ="@flex.getId()">		
+					<td class="noprint"><a href="@routes.Flexibles.edit(flex.getId())">
+						<i class="glyphicon glyphicon-pencil"></i></a>						
+					</td>			  												
+					<td class="td_@flex.getId()_1">@flex.getCategorie()</td>
+					<td class="td_@flex.getId()_2">@flex.getUtilite()</td>
+					<td class="td_@flex.getId()_3">@flex.enStockToString()</td>
+					<td class="td_@flex.getId()_4"><a target="blank" href=@flex.getFicheTechniqueLien()>@flex.getFicheTechniqueNom()</a></td>					
+					<td class="td_@flex.getId()_5">@flex.getDistributeur()</td>
+					<td class="td_@flex.getId()_6">@flex.getProduit()</td>
+					<td class="td_@flex.getId()_7">@flex.getNoItemGenius()</td>
+					<td class="td_@flex.getId()_8">@flex.epaisseurToString()</td>
+					<td class="td_@flex.getId()_9">@flex.getFormat()</td>
+					<td class="td_@flex.getId()_10">@flex.prixCoutantToString()</td>
+					<td class="td_@flex.getId()_11">@flex.getDescription</td>
+					<td class="td_@flex.getId()_12">@flex.getCaracteristiques</td>
+					<td class="td_@flex.getId()_13">@flex.getInterieurExterieur</td>
+					<td class="td_@flex.getId()_14">@flex.getDureeSupport</td>
+					<td class="td_@flex.getId()_15">@flex.getImpression</td>
+					<td class="td_@flex.getId()_16">@flex.getCommentaireUtile</td>
+					
+					<td class="noprint"><a href="" onclick="del('@routes.Flexibles.remove(flex.getId())')">
+						<i class="glyphicon glyphicon-trash"></i></a>
+					</td>
+				</tr>
+			}
+		</tbody>
+		</table>																
+	    	    	  	  	
+		}

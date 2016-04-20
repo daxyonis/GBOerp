@@ -1,0 +1,49 @@
+@(soum: models.app.AppSoumission, itemsData : Html, prodFamData : Html)
+
+@stylesheets = {
+	<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/appsoum_items.css")">		
+	<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/dialog-confirm.css")">
+}
+
+@mainjs("Items", stylesheets, "javascripts/itemsPage") {
+
+	<h1>Soumission @soum.getSuite()-@soum.getVersion (Items)</h1>
+	
+	<ol class="breadcrumb">
+	  <li><a href="@controllers.app.routes.AppSoumissions.view(soum.getNoSoumission())">Soumission</a></li>
+	  <li class="active">Items</li>
+	</ol>
+    
+    <div class="hidden alert alert-info" id="saveAlert">
+		Des changements ont été faits. Pour les conserver, cliquer sur 
+  		<button id="saveItem" class="btn btn-primary">Sauvegarder</button>. Pour les annuler, cliquer sur 
+		<button id="noSaveItem" class="btn btn-default">Réinitialiser</button> 		
+	</div>
+	
+    <div id="soumItems" class="table-responsive">
+    	<div class="alert alert-danger hidden"></div>
+    	<div class="alert alert-success hidden"></div>
+    </div>        	
+
+	<script>
+		var serverItems = @itemsData;
+		var productFamilies = @prodFamData;
+	</script>
+	
+	<div class="modal fade" id="itemModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	  <div class="modal-dialog modal-lg" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Détails pour l'item</h4>
+	      </div>
+	      <div class="modal-body">	      		      	
+	        
+	      </div>
+	      <div class="modal-footer">
+	        <p class="text-center"><button id="okBtn" type="button" class="btn btn-primary" data-dismiss="modal">OK</button></p>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+}

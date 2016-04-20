@@ -1,0 +1,24 @@
+body {
+  padding-top: 55px;
+}
+
+.info {display : none;}
+.error {color : red; }
+.gras { font-weight: bold; }
+
+div.container {
+	width:98%;
+}
+
+div.alert{
+	margin-top: 10px;
+}
+.mainContent {    
+    border-bottom: 1px solid #ccc;
+    min-height: 600px;
+}
+
+.etiquette { 
+	color : blue; 
+	padding-left: 5px;
+	}

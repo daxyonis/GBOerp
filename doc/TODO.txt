@@ -1,0 +1,43 @@
+TODO LIST
+=============
+
+29.09.2014
+
+Va-t-on pouvoir créer de nouveaux items ? Oui, mais pas la partie Estimation qui doit se faire dans Access pour le moment.
+Validation des valeurs passées dans le détail item
+
+Affichage de plus de détails de l'item. Certaines valeurs qui viennent de listes (requêtes côté Genius) doivent être non éditables et indisponibles.
+
+Afficher détail estimation ? Pas nécessaire pour l'instant.
+
+Nouvel objet : MesItems
+
+==== 30.09.2014
+
+Améliorer la vue MesItems pour créer une nouvelle liste, ajouter des items.
+
+Validation des valeurs passées dans le détail item
+
+Affichage de plus de détails de l'item (estimation) ==> plus tard.    
+
+==== 09.10.2014
+
+Backend : 
+	compléter la recherche par mot clé de Item, Soumission (done)
+	ajout de un ou plusieurs items à la liste Mes Items (done)
+
+Frontend : 
+	afficher les soumissions retournées dans un select; afficher ensuite les items d'une soumission sélectionnée
+	Multiselect des items : bouton Ajouter à Mes Items avec appel Ajax POST au serveur (done)
+================================
+NOUVEAU MODULE PREPARATION
+================================
+Choix techno
+   --> garder Play 2.3 + Ebean
+   --> se preparer a migrer a Play 2.4 (avec Ebean 4.0.x)
+   Integrer Java 8 ? ou on peut rouler avec Play 2.4 et Java 7 pour le moment...
+   Se renseigner sur Angular JS : ai-je besoin de ce framework ?
+   --> commencer les tests unitaires...
+   
+   checkout Brackets
+=========================

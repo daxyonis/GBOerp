@@ -1,0 +1,60 @@
+/***********************************
+* soum.css
+* Created 01.04.2015
+* Author Eva Maciejko
+* Describe specific CSS for soumission output
+* 
+************************************/
+
+img {
+	width: 100%; height: auto;
+	}
+	
+div.row {
+	margin-top: 0px; margin-bottom: 25px;
+	}
+	
+div#bodyDiv {
+	font-size : 10pt; padding-top: 25px; 
+	}
+	
+.petit {font-size : 8pt;}
+
+div.borderblue { border-bottom: 1px black solid;}
+div.bordergray { border: 1px #bbb solid;}  
+
+th{ text-align : center; }
+ 
+.bold {font-weight: bold;}
+
+td.signature {
+	width:50%; 
+	font-style: italic; 
+	border-bottom:1px black solid;
+	}
+	      
+table.separe {
+	border-collapse:separate; 
+	width:100%; 
+	border-spacing: 15px 0px;
+	}
+	
+table.separe2{
+	border-collapse:separate; 
+	width:100%; 
+	border-spacing: 0px 15px; 
+	background-color:#dd0; 
+	margin-top: 15px;
+	}
+	
+.blanc {color : white;}   
+
+table.enteteTable {width: 100%; margin-left: 20px;}
+table.enteteTable td{text-align: left;}
+td.etiquette {width: 25%}
+td.s-info {width: 75%}
+
+table.dateTable { width: 100%; margin-left: 20px; }
+td.centre {text-align: center }
+td.aDroite { text-align: right }
+td.aGauche { text-align: left }

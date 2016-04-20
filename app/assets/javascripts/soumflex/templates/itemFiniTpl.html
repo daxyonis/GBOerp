@@ -1,0 +1,50 @@
+<!-- <div class="tab-pane" id="fini{{id}}"> -->
+            <div class="form-group">
+                <div class="col-md-12">
+                    <table class="table resumeTable" id="resumeTableFini{{id}}">
+                        <thead>
+                            <th>Type</th>
+                            <th>Côté(s)</th>
+                            <th>Coût</th>
+                            <th>Pi2 traités</th>
+                            <th>Sous-total</th>
+                            <th>Transfer tape</th>
+                            <th>Prix t. tape (0.12$/pi<span class="exp">2</span>)</th>
+                            <th>Marge</th>
+                            <th>Total</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><select class="finiSelectType" id="finiSelectType{{id}}" name="items[{{id}}].finiSelectType"></select>
+                                                                                                          
+                                </td>
+                                <td><select class="finiSelectCote" id="finiSelectCote{{id}}" name="items[{{id}}].finiSelectCote"></select>
+                                    
+                                </td>
+                                <td id="finiPrix{{id}}"></td>
+                                <td class="finiPiTraites{{id}}"></td>
+                                <td class="finiSsTotal{{id}}"></td>
+                                <td><select class="finiSelectTtape" id="finiSelectOptTransferTape{{id}}" name="items[{{id}}].finiSelectOptTransferTape"></select>
+                                   
+                                </td>
+                                <td class="finiPrixTransferTape{{id}}"></td>
+                                <td class="profit-margin"></td>                                
+                                <td class="finiTotal{{id}}"></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <th></th>
+                            <th></th>
+                            <th>Totaux : </th>
+                            <th class="finiPiTraites{{id}}"></th>                            
+                            <th class="finiSsTotal{{id}}"></th>
+                            <th></th>                   
+                            <th></th>         
+                            <th>Prix Total:</th>
+                            <th class="finiTotal{{id}}"></th>
+                        </tfoot>
+                    </table>
+                    <input type="hidden" id="finiPiTraites" name="items[{{id}}].finiPiTraites">
+                </div>
+            </div>            
+<!--        </div>  <!-- end of section Finition -->

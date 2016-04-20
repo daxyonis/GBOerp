@@ -1,0 +1,108 @@
+@()
+
+@stylesheets = {
+		<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("lib/jquery-ui-themes/smoothness/jquery-ui.css")">
+		<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("lib/bootstrap-table/bootstrap-table.css")">
+		<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/listesoum.css")">
+}
+ 
+@javascripts = {	
+	  <script src="@routes.Assets.versioned("lib/handlebars/handlebars.js")"></script>  
+	  <script src="@routes.Assets.versioned("lib/jquery-ui/jquery-ui.js")" type="text/javascript"></script> 
+	  <script src="@routes.Assets.versioned("javascripts/lib/bootstrap-table_eva.min.js")" type="text/javascript"></script>
+	  <script src="@routes.Assets.versioned("javascripts/lib/bootstrap-table-fr-FR.min.js")" type="text/javascript"></script>
+	  <script src="@routes.Assets.versioned("javascripts/lib/datepicker-fr-CA.js")" type="text/javascript"></script>
+	  <script src="@routes.Application.javascriptRoutes()" type="text/javascript" ></script>	  
+	  <script src="@routes.Assets.versioned("javascripts/listesoum.js")" type="text/javascript"></script>	  
+}
+
+@main("Liste des soumissions", stylesheets, javascripts){
+
+	<style scoped>
+	 th, td {
+	 	text-align: center;
+	 	vertical-align: middle;
+	 	font-size: 9pt;	 	
+	 	}
+ 	</style>
+ 	
+ 	<div id="toolbar">
+        <div class="form-inline" role="form">
+        	<div class="form-group">
+				<span class="etiquette">Soum/Dossier:</span>			    
+			    <input type="text" class="form-control" size=6 name="numero" id="numero" placeholder="Numéro" value="">
+			</div>
+            <div class="form-group">
+                <span class="etiquette">Vendeur: </span>
+                <label class="sr-only" for="rep">rep</label>
+				<select id="rep" name="rep" class="form-control" >
+			    	<!-- HANDLEBARS TEMPLATE for Representant -->    
+                    <script id="rep-select-template" type="text/x-handlebars-template">      
+                      {{#each rep}}
+                        <option value="{{salesmanCode}}">{{description1}}</option>
+                      {{/each}}
+                    </script>
+                    <!-- END OF TEMPLATE -->
+			    </select>
+            </div>
+            <div class="form-group">
+                <span class="etiquette">Statut: </span>
+                <select id="statut" name="statut" class="form-control" >
+			    	<!-- HANDLEBARS TEMPLATE for Statut -->    
+                    <script id="statut-select-template" type="text/x-handlebars-template">      
+                      {{#each obj}}
+                        <option value="{{code}}">{{statut}}</option>
+                      {{/each}}
+                    </script>
+                    <!-- END OF TEMPLATE -->
+			    </select>
+            </div>             							
+			<div class="form-group">
+				<span class="etiquette">Date entre:</span>			    
+			    <input type="text" class="form-control mydatepicker" size=10 name="dateDebut" id="dateDebut" placeholder="Début" value="">
+			</div>			
+			<div class="form-group">
+			    <span class="etiquette">et</span>
+			    <input type="text" class="form-control mydatepicker" size=10 name="dateFin" id="dateFin" placeholder="Fin" value="">
+			</div>	
+			
+			<div class="form-group">			
+        		<button id="removeFilters" class="btn btn-default"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+        	</div>
+        		          
+        </div> <!--  end of form inline -->
+        
+    </div> <!--  end of toolbar -->
+        
+	<h1>Liste des soumissions</h1>        
+        <table id="table"
+               data-toggle="table"
+               data-classes = "table"
+			   data-locale = "fr-FR"
+			   data-toolbar="#toolbar"
+               data-url="@routes.Soumissions.getData()"
+               data-height="498"
+               data-pagination="true"
+               data-side-pagination = "server"
+               data-sortable = "true"               
+               data-sort-name="suite"
+               data-sort-order="desc"    
+               data-search = "true"        
+               data-silent-sort = "false"
+               data-query-params = "queryParams"  
+			   >
+            <thead>
+            <tr>                
+                <th data-field="suite" data-sortable="true" data-formatter="suiteFormatter">Soum</th>
+                <th data-field="version">Ver</th>                
+                <th data-field="clientSoum" data-sortable="true">Client</th>                
+                <th data-field="banniereClient" data-sortable="true">Bannière</th>
+                <th data-field="projet"  data-sortable="true">Projet</th>
+                <th data-field="critere" data-sortable="true">Critere</th>
+                <th data-field="noDossier" data-formatter="dossierFormatter" data-sortable="true">Dossier</th>
+                <th data-field="texteStatut" data-sortable="true">Statut</th>
+            </tr>
+            </thead>
+        </table>              
+
+}

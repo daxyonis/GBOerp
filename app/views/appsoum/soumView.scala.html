@@ -1,0 +1,175 @@
+@(soum: models.app.AppSoumission, versionMap: Map[Integer,String])
+
+@stylesheets = {
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/appsoum_main.css")">
+}
+
+@javascripts = {
+	<script src="@routes.Application.javascriptRoutes()" type="text/javascript" ></script>
+	<script src="@routes.Assets.versioned("javascripts/appsoum.js")" type="text/javascript"></script>	
+}
+
+@main("Soumission", stylesheets, javascripts){
+	
+	<script>
+		var app = app || {}; 
+		app.laVersion = "@soum.getVersion()";
+	</script>
+
+	<h2>Soumission @soum.getSuite() - <select id="vers">
+	@for((key,value) <- versionMap){
+		<option class="smTxt" @if(key == soum.getNoSoumission()){ selected } value=@key>@value</option>
+		}	
+	</select></h2>
+	
+	 <div class="modal fade" role="dialog" tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">Nouvelle version : </h4></div>
+                	<div class="modal-body">
+	                    <p>Copier les items ?</p>
+	                    <ul class="list-unstyled">
+	                        <li><input type="radio" name="copyItem" value="N" checked> Non </li>
+	                        <li>
+	                        	<div class="form-inline">
+	                        	<input type="radio" name="copyItem" value="Y">
+	                        	Oui, ceux de la version
+	                        	<select id="modal-vers" class="form-control" disabled>
+	                        		@for((key,value) <- versionMap){
+	                        			@if(key > 0){
+	                        				<option class="smTxt" value=@value>@value</option>
+                        				}
+	                        		}
+	                        	</select>
+	                        	</div> 
+	                        </li>
+	                    </ul>
+                	</div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" type="button" data-dismiss="modal">Annuler </button>
+                    <button class="btn btn-primary" type="button" id="newVersionOK" value=@soum.getSuite()>OK </button>
+                </div>
+            </div>
+        </div>
+    </div>	
+	
+	<div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Projet </th>
+                        <th>Vendeur </th>
+                        <th>Client </th>                        
+                        <th>Bannière</th>
+                        <th>Date Livraison</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@soum.getEntete().getProjet()</td>
+                        <td>@soum.getEntete().getNomVendeur()</td>
+                        <td>@soum.getEntete().getClientSoum()</td>                        
+                        <td>@soum.getEntete().getBanniereClient()</td>
+                        <td>@soum.getEntete().getDateLivraison</td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="btn-group" role="group">
+            <a class="btn btn-default" href="@controllers.app.routes.AppSoumissions.viewEntete(soum.getNoSoumission())">Éditer </a>
+        </div>
+        <div class="clearfix"></div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Items </h3></div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+								<th class="w1 centre">Qté </th>       	
+                                <th>Nom </th>
+                                <th>Description </th>                                                                                                                               
+                                <th class="w2 centre">Larg </th>
+                                <th class="w2 centre">Haut </th>
+                                <th class="w4 centre">Prix</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for(item <- soum.items) {
+                            	<tr>                            	
+                            		<td class="w1 aDroite">@item.getQuantite()</td>	
+                            		<td>@item.getNomItem()</td>
+                            		<td>@item.getDescription()</td>                            		
+                            		<td class="w2 aDroite">@item.getLargeur()</td>
+                            		<td class="w2 aDroite">@item.getHauteur()</td>
+                            		<td class="w4 aDroite">@item.getFormattedPrixFab()$</td>                            		
+                            	</tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="btn-group" role="group">                    
+                    <a class="btn btn-default" href="@controllers.app.routes.AppSoumissions.viewItems(soum.getNoSoumission())">Éditer </a>
+                    <button class="btn btn-info" type="button">ESTIMATION </button>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Dessins </h3></div>
+            <div class="panel-body">
+                <ul>
+                    <li><a href="#">Demande du 23-02-2016 : Affiche 48x60</a></li>
+                </ul>
+                <button class="btn btn-default right-btn" type="button">Nouvelle demande...</button>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Livraison(s) </h3></div>
+            <div class="panel-body"><span>Résumé des livraison ici</span>
+                <div class="btn-group" role="group">
+                    <button class="btn btn-default" type="button">+ Ajouter</button>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Installation(s) </h3></div>
+            <div class="panel-body"><span>Résumé des installations ici</span>
+                <div class="btn-group" role="group">
+                    <button class="btn btn-default" type="button">+ Ajouter</button>
+                </div>
+            </div>
+        </div>
+        <h3>Résumé des prix</h3>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th> </th>
+                        <th>Matériel </th>
+                        <th>Main d'oeuvre</th>
+                        <th>Sous-traitance </th>
+                        <th>Commission </th>
+                        <th>TOTAL </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Total </td>
+                        <td>1800.00 $</td>
+                        <td>740.00 $</td>
+                        <td>0.00 $</td>
+                        <td>25.00$ </td>
+                        <td>2565.00 $</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>   
+}

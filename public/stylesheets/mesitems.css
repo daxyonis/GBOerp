@@ -1,0 +1,6 @@
+#selectClient { width: 200px; }
+#selectRepresentants { width: 200px; }
+
+.filtre { margin-top: 5px; margin-bottom: 5px;}
+
+.uncheckedLabel { color: gray;}

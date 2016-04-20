@@ -1,0 +1,159 @@
+@(soum: Soumission)
+ 
+@stylesheets = {
+		<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">		        
+        <link rel="stylesheet" media="screen"  href="@routes.Assets.versioned("stylesheets/soum.css")">        
+  	    <link rel="stylesheet" media="print"  href="@routes.Assets.versioned("stylesheets/print.css")" type="text/css"  />
+}
+ 
+@javascripts = {        
+}
+
+@main("Soumission client", stylesheets, javascripts){    
+    <!-- BESOIN des objets soum, item, rep, client -->
+    <div id="bodyDiv">
+    <div class="row borderblue" id="enteteSoumission">
+        <div class="col-sm-3">
+            <div class="row espacemoi text-center">
+            <img src="@routes.Assets.versioned("images/logo_soum.png")" alt="logo BO Concept" />
+            </div>                 
+            <div class="row">
+                <div class="col-sm-6">Votre conseiller(ère):</div>
+                <div class="col-sm-6">@soum.rep.getDescription1()</div>
+            </div>
+            <div class="row">
+                <p class="text-center petit">
+                    @soum.rep.getEmail()
+                    <br>
+                    <br>
+                    9900, boul. Du Golf, Anjou (QC) H1J 2Y7<br>
+                    Tél. : 514-323-6767 (poste ---) Fax : 514-323-0684<br>
+                    www.groupeboconcept.com<br>
+                </p>
+            </div>
+            
+        </div>
+        <div class="col-sm-5">
+            <div class="row borderblue">
+            	<table class="dateTable">
+                    <tr>
+                        <td class="aGauche">DATE D'ENTRÉE :</td><td class="aGauche">@soum.getDateEntre()</td>
+                        <td class="aDroite">DATE REQUISE :</td><td class="centre">@soum.getDateLivraison()</td>
+                    </tr>
+                </table>                            
+            </div>
+            <div class="row">
+            	<table class="enteteTable">
+	                <tr><td class="etiquette">CLIENT :</td><td class="s-info">@soum.getClientSoum()		</td></tr>
+	                <tr><td class="etiquette">Adresse :</td><td class="s-info">@soum.client.getAdresse()	</td></tr>
+	                <tr><td class="etiquette">Ville :</td><td class="s-info">@soum.client.getVille()	</td></tr>
+	                <tr><td class="etiquette">Contact :</td><td class="s-info">@soum.getContactOrValue("")</td></tr>
+	                <tr><td class="etiquette">Téléphone :</td><td class="s-info">@soum.getClientTelephoneContactOrValue("")</td></tr>
+	                <tr><td class="etiquette">Email :</td><td class="s-info">@soum.getClientEmailOrValue("")</td></tr>
+                </table>                                
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="row borderblue">
+            	<table class="dateTable">
+                    <tr>
+                        <td class="aGauche">PO :</td><td class="aGauche"> </td>
+                        <td class="aDroite">SOUMISSION # :</td><td class="centre">@soum.getSuite()-@soum.getVersion()</td>
+                    </tr>
+                </table>                              
+            </div>
+            <div class="row">
+            	<table class="enteteTable">
+            	     <tr><td class="etiquette">FACTURER À :</td><td class="s-info">@soum.getClientSoum()</td></tr>
+            	     <tr><td class="etiquette">Adresse :</td><td class="s-info">@soum.client.getAdresse()</td></tr>
+            	     <tr><td class="etiquette">Ville :</td><td class="s-info">@soum.client.getVille()</td></tr>
+            	     <tr><td class="etiquette">Contact :</td><td class="s-info"></td></tr>
+            	     <tr><td class="etiquette">Téléphone : </td><td class="s-info"></td></tr>
+            	     <tr><td class="etiquette">Email :</td><td class="s-info"></td></tr>
+            	</table>                
+            </div>
+        </div>
+    </div>
+    
+    <div class="row borderblue" id="enteteProjet">
+        <div class="col-sm-2">PROJET : </div><div class="col-sm-10">@soum.getProjet()</div>
+    </div>
+    
+    <div class="row borderblue" id="detailItem">
+        <table class="table">
+            <thead>
+                <th>NO</th>                
+                <th>QTÉ</th>
+                <th>ITEM</th>
+                <th>DESCRIPTION</th>
+                <th>DIMENSIONS HxL</th>                                
+                <th>PRIX FAB UNITAIRE</th>
+                <th>TOTAL</th>
+            </thead>
+            <tbody>
+            @for((item, i) <- soum.items.zipWithIndex){
+            	<tr>
+	                <td class="text-center">@(i + 1)</td>	                
+	                <td class="text-center">@item.getQuantite()</td>
+	                <td class="text-center">@item.getNomItem()</td>
+	                <td class="text-center">@item.getDescription()</td>
+	                <td class="text-center">@item.getHauteur() X @item.getLargeur()</td>	                
+	                <td class="text-center">@item.getFormattedPrixUnitaire()$</td>
+	                <td class="text-right">@item.getFormattedPrixFab()$</td>
+                </tr>
+                }
+            </tbody>
+			<tfooter>
+				<th colspan=5 class="text-right bold">(Taxes, Installation et Transport en sus)</th>
+				<th class="text-right bold">TOTAL (taxes en sus) : </th>
+				<th class="text-right bold">@soum.getFormattedPrix()$</th>
+			</tfooter>
+        </table>
+    </div>        
+    
+        
+    <div class="row" id="piedPageMessages">
+        <div class="col-sm-4 bg-info petit">
+            <span class="bold">CONDITIONS</span>
+            <br>
+            Toutes marchandises demeurent la propriété exclusive de Groupe BO Concept jusqu'au paiement intégral. 
+            Le Groupe BO Concept se réserve le droit de reprendre son bien en tout temps si le paiement excède le délai prévu. 
+            Dans ce cas, toutes sommes versées sont alors non-remboursables. Les dimensions ci-haut mentionnées sont nominales 
+            et sujettes à réajustement après mesures sur le site et/ou approbation des dessins. Les prix d'installation 
+            s'appliquent pour les murs standards, sans obstacles, et sont sujets à révision après une visite du site. 
+        </div>
+        <div class="col-sm-6">
+            <div class="row bordergray text-center petit">Cette soumission signée devient un bon de commande confirmé sujet 
+                aux termes et conditions énoncés dans la présente. L'acheteur déclare en avoir pris connaissance.</div>
+            <div class="row bordergray  text-center petit espacemoi">MERCI DE NOUS OFFRIR L'OCCASION DE VOUS SERVIR !</div>
+
+            <!-- Here we use a table because we need the border-spacing -->
+            <table class="separe">
+                <tr>
+                    <td class="signature text-center">@soum.rep.getDescription1()</td>
+                    <td class="signature text-center blanc"></td>
+                </tr>
+                <tr>
+                    <td class="text-center petit">Votre conseiller(ère) / @soum.rep.getDescription1()</td>
+                    <td class="text-center petit">Signature du client</td>
+                </tr>
+                
+            </table>
+        </div>
+        <div class="col-sm-2">
+            <table class="separe2">
+                <tr>
+                    <td class="text-center">Licence RBQ : 8356-8303-07</td>
+                </tr>
+                <tr>
+                    <td class="text-center bold">NET 30 JOURS</td>
+                </tr>
+                <tr>
+                    <td  class="text-center petit">2%/mois après 30 jours</td>
+                </tr>
+            </table>                   
+        </div>    
+    
+    </div>    
+</div>
+}

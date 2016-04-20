@@ -1,0 +1,15 @@
+@(no: Int)
+
+@stylesheets = {
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/appsoum_main.css")">
+}
+
+@javascripts = {
+}
+
+@main("Soumission introuvable", stylesheets, javascripts){
+
+	<div class="alert alert-danger">
+	 La soumission #@no n'existe pas.
+	</div>
+}

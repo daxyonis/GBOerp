@@ -1,0 +1,70 @@
+<!-- <div class="tab-pane" id="inf0"> -->
+            <div class="form-group">
+                <div class="col-md-12">
+                    <table class="table resumeTable" id="resumeTableInfo{{id}}">
+                        <thead>
+                            <th class="w18p">Description</th>
+                            <th class="w11p">Taux horaire</th>
+                            <th class="w12p">Temps</th>                            
+                            <th class="w12p">Nb visuels différents</th>
+                            <th class="w18p">Sous-Total</th>
+                            <th class="w11p">Marge de profit</th>                            
+                            <th class="w18p">Total</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="left">Frais de démarrage</td>
+                                <td class="infogTaux"></td>
+                                <input type="hidden" id="infoTaux{{id}}" name="items[{{id}}].infoTaux"> 
+                                <td class="w12p" id="infoTempsDemarr{{id}}">30 min</td>                                
+                                <td class="w12p"></td>                                
+                                <td id="infoSsTotFrais{{id}}"></td>
+                                <td class="profit-margin"></td>
+                                <td id="infoTotFrais{{id}}"></td>
+                            </tr>                            
+                            <tr>
+                                <td class="left">Infographie Extra</td>
+                                <td class="infogTaux"></td>
+                                <td class="w12p" id="infoTmpsXtra{{id}}">0 min</td>
+                                <td class="w12p"><select class="infoNbVisuels" id="infoNbVisuels{{id}}" name="items[{{id}}].infoNbVisuels" data-item-no="0">                                                
+                                                </select> 
+                                                <script>
+                                                    var htmlStr = "";
+                                                    for(i=1; i<=10; i++){
+                                                        htmlStr += "<option value="+i+">"+i.toString()+"</option>";
+                                                    }
+                                                    $('#infoNbVisuels{{id}}').html(htmlStr);
+                                                </script>
+                                                visuel(s)
+                                </td>                                
+                                <td id="infoSsTotXtra{{id}}"></td>
+                                <td class="profit-margin"></td>
+                                <td id="infoTotXtra{{id}}"></td>
+                            </tr>
+                            <tr>
+                                <td class="left">Total</td>
+                                <td></td>
+                                <td id="infoSsTotTmps{{id}}" class="w12p"></td>
+                                <td class="w12p"></td>
+                                <td></td>
+                                <td></td>
+                                <td class="infoTotal{{id}}"></td>
+                            </tr>
+                            
+                            
+                        </tbody>
+                        <tfoot>
+                            <th class="w18p"></th>
+                            <th class="w11p">Heures totales:</th>
+                            <th class="w12p" id="infoTmpsTotal{{id}}"></th>     
+                            <input type="hidden" id="infoNbrHeure{{id}}" name="items[{{id}}].infoNbrHeure">                       
+                            <th class="w12p"></th>
+                            <th class="w18p"></th>
+                            <th class="w11p">Prix total:</th>                            
+                            <th class="w18p infoTotal{{id}}"></th>
+                        </tfoot>        
+                    </table>
+                </div>
+            </div>
+            
+<!-- </div> <!-- end of Infographie section -->

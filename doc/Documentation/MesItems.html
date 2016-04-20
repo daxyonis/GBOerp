@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <meta charset="utf-8">
+        <title>Aide MesItems</title>
+
+	
+	<style>
+		img { display:block; }
+		ol {background-color: #eee; }
+		li {
+		padding: 8px 0px; 
+		}
+		/*
+		p.text-alert { 
+		padding : 10px;
+		border: solid 1px red;
+		color: #F00;
+		background-color: #FDD; }*/
+		
+	</style><link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"><link rel="stylesheet" href="css/bootstrap-theme.min.css" type="text/css"></head><body>	
+
+<div class="container">
+
+<p><a href="index.html">Retour à Aide</a></p>
+<h2>Module Mes Items</h2>
+<p>Ce module permet de réunir plusieurs items existants dans une liste,
+puis de copier cette liste d'items dans une autre soumission existante,
+nommée la soumission cible. Les items et les soumissions <strong>doivent exister </strong>au préalable.</p>
+
+<ol>
+	<li>Pour accéder au module Mes Items, cliquer tout d'abord sur le lien Mes Items&nbsp;<img alt="Lien MesItems" src="images%5Clink_MesItems.png"></li>
+	<li>Le formulaire de Connexion apparaît : <img alt="Connection" src="images%5CConnection.png">. Entrer le nom d'usager (et mot de passe s'il y a lieu).</li>
+	<li>La
+page qui s'affiche est alors la liste de Mes Items (les items choisis
+que l'on veut copier). Cette liste peut être vide si c'est la première
+fois que l'usager utilise le module ou s'il a vidé sa liste :&nbsp;<img alt="MesItems liste vide" src="images%5CMesItems_vide.png"></li>
+	<li>Appuyer sur le bouton <strong>Rechercher Items</strong> pour ajouter de nouveaux items.</li>
+	<li>Voici la page de recherche d'items. <img alt="Recherche d'items" src="images%5CMesItems_recherche.png">&nbsp;Les
+items peuvent être recherchés par Item si on connaît déjà le nom, la
+description ou le numéro de l'item. Les items peuvent aussi être
+recherchés par Soumission, si on connaît plutôt le numéro, le nom de
+Projet ou le Client&nbsp;de la Soumission dont on veut copier les
+items. Cliquer sur le bouton radio qui correspond au genre de recherche
+souhaité (par Item ou par Soumission).</li>
+	<li>Dans la case <strong>Entrer mot à chercher</strong>,
+entrer le mot clé qui permet d'identifier l'item : il peut s'agir d'une
+partie ou de tout le numéro, le nom d'item, la description de l'item ou
+la famille. Ces champs sont disponibles dans la liste déroulante à
+droite de la case du mot à chercher et ils correspondent aux champs
+décrivant un Item&nbsp;dans Access.</li>
+	<li>Si on a choisi la
+recherche Par Soumission, on peut décider de chercher le mot clé dans
+les champs suivants : Numéro de Soumission, Projet, Client ou les trois
+à la fois.</li>
+	<li>En tapant&nbsp;le mot clé, la recherche débute et&nbsp;les résultats sont affichés au-dessous dans une liste d'items:&nbsp;<img alt="Resultats de recherche item oriflamme" src="images%5CMesItems_rechercheItemOriflamme.png"></li>
+	<li>Si
+on a cherché par Soumission, on obtient&nbsp;une liste de soumissions
+qui incluent le mot clé, et&nbsp;puis juste en-dessous,&nbsp;la liste
+des items de la soumission sélectionnée. En sélectionnant une
+soumission différente, la liste d'items va se mettre à jour
+automatiquement.&nbsp;<img alt="Mes Items resultats recherche par Soumission" src="images%5CMesItems_rechercheSoumission.png">
+</li>
+	<p class="text-danger bg-danger">NOTE
+IMPORTANTE CONCERNANT LES RÉSULTATS RETOURNÉS : afin de rendre la
+recherche plus rapide, on a limité à 20 le nombre de résultats
+retournés : il est donc essentiel de faire une recherche la plus
+précise possible pour trouver le bon item ou la bonne soumission. Par
+exemple, si on cherche le mot <em>affiche</em>, il est clair que dans
+la base de données il y a beaucoup plus que 20 items qui contiennent ce
+mot ! Mais les résultats affichés ne vont retourner que les 20 plus
+récents items ayant ce mot. Si on veut une affiche qui date d'il y a
+plusieurs mois, il vaut mieux alors faire une recherche par soumission
+en retrouvant la soumission qui décrivait cet item <em>affiche</em>
+précis. À noter aussi que la recherche de plusieurs mots ne fonctionne
+pas, à moins que les mots soient réellement l'un à la suite de l'autre.
+Par exemple, pour trouver un item appelé <em>Affiche de la semaine verte</em>, les mots clés <em>affiche verte</em> ne retourneront pas cet item (ces deux mots ne sont pas consécutifs dans l'item), tandis que les mots clés <em>semaine verte</em> (mots consécutifs) vont bien retourner cet item.</p>
+	
+	<li>Il suffit ensuite de cocher les items que l'on souhaite puis de cliquer sur le bouton A<strong>jouter à Mes Items</strong>&nbsp;<img alt="Items cochés" src="images%5CMesItems_itemsCoches.png"></li>
+	<li>Ceci
+nous ramène à la page contenant la liste Mes Items. On peut y voir les
+items cochés précedemment. On peut ajouter d'autres items (bouton <strong>Rechercher Items</strong>).
+On peut également effacer des items en cliquant sur l'icône poubelle
+à&nbsp;gauche de chaque item. Pour effacer toute la liste d'un coup,
+cliquer sur le bouton <strong>Effacer tout</strong> à droite de la page.&nbsp;<img alt="Effacer tous les items" src="images%5CMesItems_effacerTout.png"></li>
+	<li>Une fois que les items sont choisis, on peut rechercher une soumission (dite la cible) dans laquelle copier cette liste d'items:<img alt="Recherche soumission cible" src="images%5CMesItems_soumCible.png"></li>
+	<li>Entrer
+le mot clé dans l'espace prévu et sélectionner le champ de recherche :
+Numéro de soumission (par défaut), Projet, Client ou Tout pour chercher
+dans les trois champs à la fois.</li>
+	<li>En tapant le mot clé, la
+recherche débute et les résultats sont affichés en-dessous sous la
+forme d'une liste déroulante de soumissions.<img alt="Soumission cible liste" src="images%5CMesItems_soumCibleListe.png"></li>
+	<li>Sélectionner la soumission voulue comme cible, puis cliquer sur le bouton <strong>Copier Mes Items</strong>.</li>
+	<li>La
+page de confirmation apparaît, qui résume l'opération qui va se
+produire. Si tout est conforme, cliquer sur Copier; sinon, pour revenir
+en arrière, cliquer sur Annuler.&nbsp;<img alt="Mes Items copier" src="images%5CMesItems_copier.png"></li>
+	<li>On
+revient alors à la page de la liste Mes Items; un message confirmant
+l'opération est affiché (succès ou erreur selon ce qui s'est passé).</li>
+</ol>
+
+<p><a href="index.html">Retour à Aide</a></p>
+
+</div>
+<script>
+$(document).ready( function(){
+	$('img').addClass('img-responsive');
+	});
+</script>
+</body></html>

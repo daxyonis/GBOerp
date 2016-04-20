@@ -1,0 +1,16 @@
+@(elements: views.html.helper.FieldElements)
+
+@import views.html.helper._
+
+<div class="@if(elements.hasErrors) {error}">
+    <label class="col-sm-2 control-label" for="@elements.id">@elements.label</label>
+    <div class="col-sm-4">
+    	<div class="bfh-datepicker" data-format="d-m-y" data-min="today" 
+    		 data-align="right" data-name="@elements.id" data-date="@elements.field.value">
+        @elements.input
+        </div>
+        @if(elements.hasErrors) {
+          <span class="help-inline text-danger">@elements.errors.mkString(", ")</span>
+        }         
+    </div>
+</div>

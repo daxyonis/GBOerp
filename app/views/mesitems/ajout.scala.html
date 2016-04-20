@@ -1,0 +1,161 @@
+@()
+
+@stylesheets = {
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("lib/jquery-ui-themes/smoothness/jquery-ui.css")">
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/spinner.css")">
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/mesitems.css")">
+}
+ 
+@javascripts = {
+
+<script src="@routes.Assets.versioned("lib/handlebars/handlebars.js")"></script>
+<script src="@routes.Assets.versioned("lib/jquery-ui/jquery-ui.js")" type="text/javascript"></script>
+<script src="@routes.Assets.versioned("javascripts/rechercheItems.js")" type="text/javascript"></script> 
+<script src="@routes.Assets.versioned("javascripts/lib/datepicker-fr-CA.js")" type="text/javascript"></script>
+<script src="@routes.Application.javascriptRoutes()" type="text/javascript" ></script>
+}
+
+@main("Recherche d'items", stylesheets, javascripts) {
+
+<h1>Recherche d'items</h1>		
+<div class="row">
+<div class="col-lg-6">
+	<!-- Formulaire pour type de recherche -->
+	<form class="form-horizontal" role="form">
+  		<div class="form-group">	    	
+	    	<label for="choixItemSoum" class="col-sm-3 control-label">Chercher par</label>					
+			<div class="col-sm-9">		
+				<div class="radio">
+				  <label>
+				    <input type="radio" name="choixItemSoum" id="choixItem" value="@routes.Items.list()" checked>
+				    Item
+				  </label>
+				</div>
+				<div class="radio">
+				  <label>
+				    <input type="radio" name="choixItemSoum" id="choixSoum" value="@routes.Soumissions.list()">
+				    Soumission
+				  </label>
+				</div>
+			</div>
+		</div>  <!--  form-group -->			
+	</form> 
+
+	<!-- Formulaire pour mots-clés de la recherche -->  		
+	<form class="form-inline" role="form">
+		<div class="col-sm-offset-3 col-sm-9">
+		  <div class="form-group">
+		    <label class="sr-only" for="inputTextKeyword">Mot</label>
+		    <input type="text" class="form-control" id="inputTextKeyword" placeholder="Entrer mot à chercher">
+		  </div>
+		  <div class="form-group">
+		    <label class="control-label" for="fieldSelect"> dans </label>
+		    <select id="fieldSelect">
+		    	<option value="all" selected="selected">Tout</option>
+		    	<option value="NoItem">No Item</option>
+		    	<option value="NomItem">Nom Item</option>
+		    	<option value="Description">Description</option>
+		    	<option value="Famille">Famille</option>
+		    </select>
+		  </div>
+	  </div>
+  </form>
+ </div> <!-- end of first col-lg-6 -->
+ 
+<div class="col-lg-6 hidden" id="filtres">
+<!-- Formulaire pour filtres de la recherche -->      
+	<div class="col-sm-2 gras">Filtrer par
+	</div>  	
+ 	<div class="col-sm-offset-2 col-sm-10 uncheckedLabel" id="divFiltreDate">
+		 <form class="form-inline filtre" role="form">					
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" name="choixFiltreDate" id="filtreDate">
+						Date entre: 				
+					</label>
+				</div>
+				<div class="form-group">
+				    <label class="sr-only" for="dateDebut">Date début</label>
+				    <input type="text" class="mydatepicker" size=10 name="dateDebut" id="dateDebut" readonly placeholder="Début">
+				</div>
+				et
+				<div class="form-group">
+				    <label class="sr-only" for="dateFin">Date fin</label>
+				    <input type="text" class="mydatepicker" size=10 name="dateFin" id="dateFin" readonly placeholder="Fin">
+				</div>		
+		</form>  <!--  inline form -->
+	</div>
+	<div class="col-sm-offset-2 col-sm-10 uncheckedLabel" id="divFiltreClient">
+		<form class="form-inline filtre" role="form">
+		<div class="checkbox">
+		  <label>
+		    <input type="checkbox" name="choixFiltreClient" id="filtreClient">
+		    Client : 		    
+		  </label>
+		</div>
+		<div class="form-group">
+			<label class="sr-only" for="selectClient">client</label>
+			<select id="selectClient" name="selectClient">      
+                    <!-- HANDLEBARS TEMPLATE for Client -->   
+                    <!-- The #each helper iterates over an array of items.--> 
+                    <script id="client-select-template" type="text/x-handlebars-template">      
+                      {{#each client}}
+                        <option value="{{noClient}}">{{nom}}</option>
+                      {{/each}}
+                    </script>
+                    <!-- END OF TEMPLATE -->
+          	</select>
+         </div>      
+		 </form>  <!--  inline form -->
+	</div>
+	<div class="col-sm-offset-2 col-sm-10 uncheckedLabel" id="divFiltreVendeur"> 
+		<form class="form-inline filtre" role="form">	    
+			<div class="checkbox">
+			  <label>
+			    <input type="checkbox" name="choixFiltreVendeur" id="filtreVendeur">
+			    Vendeur :			    
+			  </label>
+			</div>
+			<div class="form-group">
+				<label class="sr-only" for="selectRepresentant">rep</label>
+				<select id="selectRepresentant" name="selectRepresentant">
+			    	<!-- HANDLEBARS TEMPLATE for Representant -->    
+                    <!-- The #each helper iterates over an array of items. -->
+                    <script id="rep-select-template" type="text/x-handlebars-template">      
+                      {{#each rep}}
+                        <option value="{{salesmanCode}}">{{description1}}</option>
+                      {{/each}}
+                    </script>
+                    <!-- END OF TEMPLATE -->
+			    </select>
+		    </div>		
+		</form>  <!--  inline form -->
+	</div>								  
+ </div><!-- end of second col-lg-6 -->
+  
+  	<!-- spinner -->		
+	<div id="loadingDiv" class="form-group">			
+		<div id="spinnerDiv">
+			<div id="blockG_1" class="facebook_blockG">
+			</div>
+			<div id="blockG_2" class="facebook_blockG">
+			</div>
+			<div id="blockG_3" class="facebook_blockG">
+			</div>
+		</div>
+	</div>
+</div><!-- end of row -->
+
+
+<!--  Quand on cherche une soumission, lister ici comme un select -->
+<div id="listeSoumissions">
+</div>
+
+<!-- Lister ici les items soit de la soumission sélectionnée ci-dessus
+ soit de la recherche directe d'items -->
+<div id="listeItems">			
+</div>
+
+<a href="@routes.MesItemsCtrl.add()" id="ajoutItems" class="hidden btn btn-primary disabled" role="button">Ajouter à Mes Items</a>						
+}

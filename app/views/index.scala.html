@@ -1,0 +1,16 @@
+@(message: String)
+
+@stylesheets = {		
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">          
+}
+ 
+
+@mainjs("Accueil", stylesheets, "javascripts/home") {
+
+    <h1>Groupe BO Concept Ventes</h1>
+    @if(!message.isEmpty()){
+    	<p class="alert alert-danger">@message</p>
+    }
+
+	<div id="container"></div>
+}

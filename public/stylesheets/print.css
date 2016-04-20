@@ -1,0 +1,117 @@
+@media print {
+
+    img {
+	width: 100%; height: auto;
+	}
+	
+div.row {
+	margin-top: 0px; margin-bottom: 15px;
+	}
+	
+div#bodyDiv {
+	font-size : 10pt; padding-top: 25px;
+	}
+	
+.hidden-print {
+	display : none;
+}	
+.petit {font-size : 8pt;}
+
+div.borderblue { border-bottom: 1px black solid;}
+div.bordergray { border: 1px #bbb solid;} 
+
+th, td{ text-align : center;}
+ 
+.bold {font-weight: bold;}
+
+td.signature {
+	width:50%; 
+	font-style: italic; 
+	border-bottom:1px black solid;
+	}
+	      
+table.separe {
+	border-collapse:separate; 
+	width:100%; 
+	border-spacing: 15px 0px;
+	}
+	
+table.separe2{
+    font-size: 8pt;
+	border-collapse:separate; 
+	width:100%; 
+	border-spacing: 0px 15px;	
+	margin-top: 15px;
+	}       
+    
+    table.enteteTable {width: 100%; margin-left: 20px;}
+    table.enteteTable td{text-align: left;}
+    td.etiquette {width: 30%}
+    td.info {width: 70%}
+    
+    table.dateTable { width: 100%; margin-left: 20px; }
+    td.centre {text-align: center }
+    td.aDroite { text-align: right }
+    td.aGauche { text-align: left }
+    /******************************/        
+    body { 
+          margin: 0px;
+          padding: 0px;
+        
+          font-family: "Times New Roman", Times, serif;  
+ 
+          font-size: 10pt;  
+ 
+          color: #000000;  
+ 
+          background-color: #FFFFFF;  
+         }     
+    
+    .print-small {font-size: 8pt; }
+    .text-center { text-align: center; } 
+    .text-left { text-align: left; }
+
+.row {
+    clear: both;
+}
+.col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
+  float: left;
+}
+.col-sm-12 {
+  width: 100%;
+}
+.col-sm-11 {
+  width: 91.66666666666666%;
+}
+.col-sm-10 {
+  width: 83.33333333333334%;
+}
+.col-sm-9 {
+  width: 75%;
+}
+.col-sm-8 {
+  width: 66.66666666666666%;
+}
+.col-sm-7 {
+  width: 58.333333333333336%;
+}
+.col-sm-6 {
+  width: 50%;
+}
+.col-sm-5 {
+  width: 41.66666666666667%;
+}
+.col-sm-4 {
+  width: 33.33333333333333%;
+ }
+ .col-sm-3 {
+   width: 25%;
+ }
+ .col-sm-2 {
+   width: 16.666666666666664%;
+ }
+ .col-sm-1 {
+  width: 8.333333333333332%;
+ }
+
+  }

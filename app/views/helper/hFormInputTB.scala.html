@@ -1,0 +1,13 @@
+@(elements: views.html.helper.FieldElements)
+
+@import views.html.helper._
+
+<div class="form-group @if(elements.hasErrors) {error}">
+    <label class="col-sm-4 control-label" for="@elements.id">@elements.label</label>
+    <div class="col-sm-6">
+        @elements.input
+        @if(elements.hasErrors) {
+          <span class="help-inline text-danger">@elements.errors.mkString(", ")</span>
+        } 
+    </div>
+</div>

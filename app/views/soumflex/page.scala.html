@@ -1,0 +1,198 @@
+@(myForm: Form[SoumFlex])
+
+@import helper._
+
+<!DOCTYPE html>
+
+
+<html>
+    <head>
+        <title>Soumission Rapide Flexibles</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">                                                    
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("lib/bootswatch-cerulean/css/bootstrap.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/bootstrap-formhelpers.min.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/btn-default.css")">		
+ 
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">    
+        <script data-main="@routes.Assets.versioned("javascripts/soumflex")" src="@routes.Assets.versioned("lib/requirejs/require.js")"></script>              
+    </head>
+    <body>
+    @navigation()
+        
+    <div class="container">
+    @if(flash.containsKey("success")) {
+    	<div class="alert alert-success">
+    	 @flash.get("success")
+    	</div>
+    }
+    @if(flash.containsKey("error")) {
+    	<div class="alert alert-danger">
+    	 @flash.get("error")
+    	</div>
+    }    
+    </div>
+    
+    <div class="container mainContent ">    
+    	<h1>Soumission Flexibles</h1>
+    
+	    <style>
+	       .requiredError {        
+	       color : red;
+	       font-weight:bold;
+	       font-size:small;
+	       }
+	    </style>        
+	    
+	    @if(myForm.hasErrors()){
+	    <div class="alert alert-danger"> 
+	    <p>Erreurs à  corriger lors de l'envoi du formulaire:</p>
+	    	<ul>
+	    	@for((key, errorList) <- myForm.errors()) {
+	    	    @for(err <- errorList){
+	    			<li>@key : @err.message()</li>
+	    		}
+	    	}
+	    	</ul>
+	    </div>
+	    }
+	    
+		<!-- ZE FORM -->
+		@form(routes.SoumRapideFlexible.save(), 'class -> "form-horizontal") {
+			@CSRF.formField
+			
+		<div id="entete">
+        <h3 class="titre-section">Entête</h3>
+                                
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputProjet">Projet</label>
+                <div class="col-md-4">
+                <input type="text" class="form-control" id="inputProjet" name="inputProjet" placeholder="Nom du projet" required>
+                </div>
+            </div>
+        
+            <div class="form-group">
+            <label class="col-md-2 control-label" for="selectRepresentant" >Représentant</label>
+                <div class="col-md-4">
+                <select class="form-control" id="selectRepresentant" name="selectRepresentant" required>  
+                    <!-- HANDLEBARS TEMPLATE for Representant -->    
+                    <!-- The #each helper iterates over an array of items. -->
+                    <script id="rep-select-template" type="text/x-handlebars-template">
+                      {{#each rep}}
+                        <option value="{{salesmanCode}}">{{description1}}</option>
+                      {{/each}}
+                    </script>
+                    <!-- END OF TEMPLATE -->
+                </select>
+                </div>
+            </div>
+            <div class="form-group">
+            <label class="col-md-2 control-label" for="selectClient" >Client</label>
+                <div class="col-md-4">
+                <select class="form-control" id="selectClient" name="selectClient" required>      
+                    <!-- HANDLEBARS TEMPLATE for Client -->   
+                    <!-- The #each helper iterates over an array of items.--> 
+                    <script id="client-select-template" type="text/x-handlebars-template">
+                      {{#each client}}
+                        <option value="{{noClient}}">{{nom}}</option>
+                      {{/each}}
+                    </script>
+                    <!-- END OF TEMPLATE -->
+                </select>
+                </div>
+            </div>                        
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputContactNom">Contact</label>
+                <div class="col-md-3">
+                <input type="text" class="form-control" id="inputContactNom" name="inputContactNom" placeholder="Nom du contact">
+                </div>
+                <label class="col-md-1 control-label" for="inputContactTel">Tel</label>
+                <div class="col-md-2">
+                <input type="text" class="form-control inputAValider" id="inputContactTel" name="inputContactTel" placeholder="Tel contact">
+                </div>
+                <label class="col-md-1 control-label" for="inputContactEmail">Email</label>            
+                <div class="col-md-3">
+                <input type="email" class="form-control inputAValider" id="inputContactEmail" name="inputContactEmail" placeholder="Email contact">
+                </div>
+            </div>                        
+            
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="inputDate">Date requise</label>            
+                <div class="col-md-2">
+                    <div class="bfh-datepicker" data-format="d/m/y" data-min="today" data-align="right" data-name="inputDate">
+                        <input id="inputDate" name="inputDate" type="text" class="datepicker" >
+                    </div>                
+                </div>                
+                <label class="col-md-2 control-label" for="inputDateEstimation">Date d'estimation</label>            
+                <div class="col-md-2">
+                <input type="text" class="form-control" id="inputDateEstimation" name="inputDateEstimation" readonly>
+                </div>
+            </div>
+		</div> <!-- end of entete -->    
+		
+		<div id="details">
+        <h3 class="titre-section">Détails des items</h3>
+        <div id="errorMsg"></div>		
+		<!--***************************************************** -->
+		<div id="listeItems">
+			
+		</div> <!-- end of parItem  -->
+		<!--***************************************************** -->
+		
+		<p><button type="button" class="btn btn-primary" id="btnAjoutItem">Ajouter un item</button></p>  
+		<div id="bottomErrMsg"></div>		
+		</div> <!-- end of details (all items section)-->
+		
+		<div id="resumeSoum">
+		<div id="optPrix">
+        <h3 class="titre-section">Options de prix</h3>
+        <div class="col-md-12">
+            <table class="table resumeTable" id="resumeTableOptionPrix">
+                <thead>
+                    <th>Coûtant total</th>
+                    <th>Vendant total</th>
+                    <th>Marge effective</th>
+                    <th>Commission</th>                    
+                    <th>Prix au pied carré</th>
+                    <th>Total Estimé</th>
+                    <th>Montant des ventes</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td id="soumCoutantTotal"></td>
+                        <td id="soumVendantTotal"></td>
+                        <td id="soumMargeEffective"></td>
+                        <td class="soumCommission"></td> 
+                        <input type="hidden" id="inputCommission" name="inputCommission">                       
+                        <td id="soumPrixPiCar"></td>
+                        <td id="soumPrixTotal"></td>
+                        <td class="soumVentesTotal"></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <th colspan="2"></th>
+                    <th>Commission totale:</th>
+                    <th class="soumCommission"></th>                    
+                    <th></th>
+                    <th>PRIX DE VENTE TOTAL:</th>
+                    <th class="soumVentesTotal"></th>
+                </tfoot>        
+            </table>
+            <input type="hidden" id="margeGlobale" name="margeGlobale">
+    	</div> 
+		</div><!-- optPrix -->
+						
+		<p class="text-center">	
+			<input type="submit" class="btn btn-primary" id="soumettreSoum" value="Sauvegarder la soumission">		
+			<a class="btn" href="@routes.SoumRapideFlexible.show()">Vider</a>
+		</p>
+		</div> <!-- resumeSoum -->
+		}   
+    </div>    
+        
+    @footer()          
+                  
+    </body>
+</html>

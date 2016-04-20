@@ -1,0 +1,77 @@
+@import helper._
+@(mesItems : List[Item], user : String, cible : Soumission)
+
+@stylesheets = {
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/spinner.css")">
+}
+ 
+@javascripts = { 
+}
+
+@main("Mes Items", stylesheets, javascripts){
+
+	<h2>Confirmation pour @user</h2>
+	<p>Les items suivants : </p>
+	
+		<div class="table-responsive">
+		<table class="table table-striped">
+		<thead>
+			<tr>							
+				<th>No Item</th><th>Nom Item</th><th>Description</th><th>Hauteur</th><th>Largeur</th><th>Famille</th><th>Source Prod</th>									
+			</tr>
+		</thead>
+		<tbody>
+			@for(rangee <- mesItems) {
+				<tr>								
+					<td>@rangee.getNoItem()</td>
+					<td>@rangee.getNomItem()</td>
+					<td>@rangee.getDescription()</td>
+					<td>@rangee.getHauteur()</td>
+					<td>@rangee.getLargeur()</td>					
+					<td>@rangee.getFamille()</td>
+					<td>@rangee.getSourceProd()</td>
+				</tr>
+			}
+		</tbody>
+		</table>
+		</div>
+	
+	<p>vont être copiés dans la soumission :</p>
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>							
+					<th>Numéro</th><th>Client</th><th>Projet</th>									
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>@cible.getSuite() -@cible.getVersion()</td><td>@cible.getClientSoum()</td><td>@cible.getProjet()</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<p class="bg-danger">En cliquant sur COPIER, les items incluant leurs données d'estimation 
+	vont être copiés dans la soumission cible, sans possibilité de revenir en arrière 
+	(sauf en supprimant manuellement les items dans la soumission).</p>
+	
+	@* Petit formulaire avec un seul input caché pour transmettre le numéro de la cible
+	*  on fait cela pour respecter les conventions REST : un POST pour faire une modif
+	*  a une entité (ici on modifie la table Items)
+	*@
+	@helper.form(action = routes.MesItemsCtrl.copy()) {
+		@CSRF.formField
+		<fieldset>		
+			<input type="hidden" value=@cible.getNoSoumission() name="noSoumission" />		
+		</fieldset>		
+		<input type="submit" class="btn btn-primary" value="COPIER">		
+		<a class="btn" href="@routes.MesItemsCtrl.show()">Annuler</a>
+	}
+	
+	@*
+	<a href="@routes.MesItemsCtrl.copy()" class="btn btn-primary" role="button">COPIER</a>
+	<a href="@routes.MesItemsCtrl.show()" class="btn btn-primary" role="button">ANNULER</a>
+	*@
+}

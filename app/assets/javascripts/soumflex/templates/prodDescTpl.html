@@ -1,0 +1,9 @@
+<!-- HANDLEBARS TEMPLATE for Produit Materiel -->    
+{{#if flex.id}}
+<div class="col-md-10 col-md-offset-2">
+    <p class="text-info desc">{{flex.description}} - {{flex.caracteristiques}}<br />
+    Utilité : {{flex.utilite}} {{#if flex.enStock}}- En Stock {{/if}} - 
+    Format(s) de {{flex.format}} - {{maxCost}}$ - Imprimante(s) : {{flex.impression}} - {{flex.commentaire}}
+    </p>
+</div>
+{{/if}}

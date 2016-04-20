@@ -1,0 +1,122 @@
+@(flexs: List[Flexible], flexForm: Form[Flexible], categories: List[String])
+
+@import helper._
+
+@implicitField = @{ FieldConstructor(views.html.helper.hFormInputTB.f) }
+@checkboxFieldConstructor = @{ FieldConstructor(views.html.helper.checkboxTB.f) }
+@selectFieldConstructor = @{ FieldConstructor(views.html.helper.hFormSelectTB.f) }
+
+@stylesheets = {
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("lib/bootstrap-table/bootstrap-table.css")">
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/spectrum.css")">
+}
+ 
+@javascripts = { 
+<script src="@routes.Assets.versioned("lib/bootstrap-table/bootstrap-table.js")" type="text/javascript"></script>
+<script src="@routes.Assets.versioned("javascripts/lib/bootstrap-table-fr-FR.min.js")" type="text/javascript"></script>
+<script src="@routes.Assets.versioned("javascripts/lib/spectrum.js")" type="text/javascript"></script>
+<script src="@routes.Assets.versioned("javascripts/flex.js")" type="text/javascript"></script>       
+}
+
+@main("Edition de flexible", stylesheets, javascripts) {    
+
+    @list(flexs)
+
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-lg">
+	    <div class="modal-content">	    
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	        <h1 class="modal-title text-center" id="myModalLabel">Produit : @flexForm("Produit").valueOr("Nouveau")</h1>	        
+	      </div>
+	      <div class="modal-body">
+			@if(flash.containsKey("error")) {
+	    	<div class="alert alert-danger">
+	    	 @flash.get("error")
+	    	</div>
+    		}
+    		    
+			@helper.form(routes.Flexibles.save(), 'class -> "form-horizontal") {
+				@CSRF.formField
+				
+				<fieldset>					
+				@* Do not add the Id in the form as it is not editable and some problems
+				*  arise when doing New or resending a form with errors
+				*  @helper.inputText(flexForm("Id"), '_label -> "Id", 'readonly -> "readonly", 'size -> 50)
+				*@
+				<input type="hidden" value=@flexForm("Id").valueOr("") name="id" />			
+				
+				@helper.select(flexForm("Categorie"), options = options(categories), '_label -> "Catégorie", 'class -> "form-control")(handler = selectFieldConstructor , implicitly[Messages])			
+				@helper.inputText(flexForm("Utilite"), '_label -> "Utilité", 'size -> 50, 'class -> "form-control")
+								 				
+			    @helper.checkbox(flexForm("EnStock"), '_label -> "En stock", 'size -> 50)(handler = checkboxFieldConstructor , implicitly[Messages])			
+							
+				@helper.inputText(flexForm("FicheTechniqueNom"), '_label -> "Fiche Technique Nom", 'size -> 50, 'class -> "form-control")
+				@helper.inputText(flexForm("FicheTechniqueLien"), '_label -> "Fiche Technique Lien", 'size -> 50, 'class -> "form-control")	
+				@helper.inputText(flexForm("Distributeur"), '_label -> "Distributeur", 'size -> 50, 'class -> "form-control")
+				@helper.inputText(flexForm("Produit"), '_label -> "Produit", 'size -> 50, 'class -> "form-control")
+				@helper.inputText(flexForm("NoItemGenius"), '_label -> "No Item Genius", 'size -> 50, 'class -> "form-control")
+				@helper.inputText(flexForm("Epaisseur"), '_label -> "Épaisseur", 'size -> 50, 'class -> "form-control")
+				@helper.select(flexForm("EpaisseurUnites"), options = options(Seq("mil","oz")), '_label -> "Unités épaisseur", 'class -> "form-control")(handler = selectFieldConstructor , implicitly[Messages])
+				@helper.inputText(flexForm("Format"), '_label -> "Format(s)", 'size -> 50, 'class -> "form-control")
+				@helper.inputText(flexForm("FormatMax"), '_label -> "Format maximal (largeur max)", 'size -> 50, 'class -> "form-control")
+				@helper.inputText(flexForm("PrixCoutant1"), '_label -> "Prix coûtant", 'size -> 50, 'class -> "form-control")
+				@helper.inputText(flexForm("PrixCoutant2"), '_label -> "Prix coutant 2", 'size -> 50, 'class -> "form-control")
+				@helper.textarea(flexForm("Description"), '_label -> "Description", 'rows -> 4, 'cols -> 50, 'class -> "form-control")
+				@helper.inputText(flexForm("Caracteristiques"), '_label -> "Caractéristiques", 'size -> 50, 'class -> "form-control")
+				@helper.select(flexForm("InterieurExterieur"), options = options(Seq("","INT","EXT","INT-EXT")), '_label -> "Intérieur / Extérieur", 'class -> "form-control")(handler = selectFieldConstructor , implicitly[Messages])
+				@helper.select(flexForm("DureeSupport"), options = options(Seq("","Temporaire","Moyen terme","Long terme","M & L terme")), '_label -> "Durée support", 'class -> "form-control")(handler = selectFieldConstructor , implicitly[Messages])																		 			
+				 
+				<div class="form-group">
+					<label class="col-sm-4 control-label" for="imprimantes[0].codeSelection">Impression</label>
+    				<div class="col-sm-offset-4 col-sm-8">    				
+    				<input name="imprimantes[0].codeSelection" type="checkbox" value="CoreJet" 
+						@for(i <- 0 to 4){
+						  @if(flexForm("imprimantes[" + i + "].codeSelection").value=="CoreJet") { checked }
+						}
+						> CorJet												
+					<input name="imprimantes[1].codeSelection" type="checkbox" value="HPEx4coul" 
+						@for(i <- 0 to 4){
+						  @if(flexForm("imprimantes[" + i + "].codeSelection").value=="HPEx4coul") { checked }
+						}
+						> Expedio
+					<input name="imprimantes[2].codeSelection" type="checkbox" value="HPTempo4coul" 
+						@for(i <- 0 to 4){
+						  @if(flexForm("imprimantes[" + i + "].codeSelection").value=="HPTempo4coul") { checked }
+						}
+						> Tempo
+					<input name="imprimantes[3].codeSelection" type="checkbox" value="Latex"
+						@for(i <- 0 to 4){
+						  @if(flexForm("imprimantes[" + i + "].codeSelection").value=="Latex") { checked }
+						}
+						> Latex
+					<input name="imprimantes[4].codeSelection" type="checkbox" value="Roland720" 
+						@for(i <- 0 to 4){
+						  @if(flexForm("imprimantes[" + i + "].codeSelection").value=="Roland720") { checked }
+						}
+						> Roland
+					</div>
+				</div>
+				
+				@helper.inputText(flexForm("CommentaireUtile"), '_label -> "Commentaire utile", 'size -> 50, 'class -> "form-control")				
+				
+				
+				</fieldset>	
+				<p class="text-center">	
+				<input type="submit" class="btn btn-primary" value="Sauvegarder">		
+				<a class="btn" href="@routes.Flexibles.list()">Annuler</a>
+				</p>
+			}
+		
+		</div>	
+		 @* Following lines are commented out
+	      <div class="modal-footer">	        	        
+	      </div>
+	      *@
+	    </div>
+	  </div>
+	</div>		
+	
+}

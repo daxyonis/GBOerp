@@ -1,0 +1,69 @@
+<!-- <div class="tab-pane" id="mo{{id}}"> -->
+            <div class="form-group">
+                <div class="col-md-12">
+                    <table class="table resumeTable resumeTableMO" id="resumeTableMO{{id}}">
+                        <thead>
+                            <th>Description</th>
+                            <th>Taux / Coût</th>
+                            <th>Temps / quantité</th>
+                            <th>Sous-total</th>
+                            <th>Marge de profit</th>
+                            <th>Total</th>                            
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="left">Coupe / Manip. / Emb.</td>
+                                <td id="moManipTaux{{id}}"></td>
+                                <input type="hidden" id="moTaux" name="items[{{id}}].moTaux">
+                                <td id="moManipTemps{{id}}"></td>
+                                <td id="moManipSsTotal{{id}}"></td>
+                                <td class="profit-margin"></td>
+                                <td id="moManipTotal{{id}}"></td>
+                            </tr>
+                            <tr>
+                                <td class="left">Extras / Divers</td>
+                                <td id="moDiversTaux{{id}}"></td>
+                                <td>
+                                    <select class="moDiversTemps" id="moDiversTemps{{id}}" >
+                                        <option value=0 selected>0</option>
+                                        <option value=15>15</option>
+                                        <option value=30>30</option>
+                                        <option value=45>45</option>
+                                        <option value=60>60</option>
+                                    </select>min
+                                </td>
+                                <td id="moDiversSsTotal{{id}}"></td>
+                                <td class="profit-margin"></td>
+                                <td id="moDiversTotal{{id}}"></td>
+                            </tr>
+                            <tr>
+                                <td class="left">Matériel d'emballage</td>
+                                <td id="moSacPrix{{id}}"></td>
+                                <td id="moSacQte{{id}}"></td>
+                                <input type="hidden" id="moCoutSac" name="items[{{id}}].moCoutSac">
+                                <td></td>
+                                <td></td>
+                                <td id="moSacTotal{{id}}"></td>
+                            </tr>
+                            <tr>
+                                <td class="left">Total</td>
+                                <td></td>
+                                <td id="moTempsTotal{{id}}"></td>
+                                <input type="hidden" id="moNbrHeure" name="items[{{id}}].moNbrHeure">
+                                <td></td>
+                                <td></td>
+                                <td class="moPrixTotal{{id}}"></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <th></th>
+                            <th>Heures totales:</th>
+                            <th id="moHresTotales{{id}}"></th>
+                            <th></th>
+                            <th>Prix total:</th>
+                            <th class="moPrixTotal{{id}}"></th>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>            
+<!-- </div> <!-- end of Main d'Oeuvre section -->

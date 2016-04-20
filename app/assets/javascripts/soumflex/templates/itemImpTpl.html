@@ -1,0 +1,40 @@
+<!-- <div class="tab-pane imp" id="imp{{id}}"> -->
+              <div class="form-group">
+                <label class="col-md-2 control-label" for="impSelect{{id}}">Imprimante</label>
+                <div class="col-md-2">
+                <select class="form-control imp impSelect" id="impSelect{{id}}" name="items[{{id}}].impSelect" >                    
+                </select>                
+                </div>
+            </div>           
+            <div class="form-group">
+                <div class="col-md-10 col-md-offset-2">
+                    <table class="table resumeTable resumeTableImpr" id="resumeTableImpr{{id}}" >
+                        <thead>
+                            <th>Encre total</th>
+                            <th>Temps manipulation</th>
+                            <th>Temps impression</th>                          
+                            <th>Temps total</th>                            
+                            <th>Impression total</th>
+                            <th>Prix Total</th>
+                        </thead>
+                        <tbody>
+                            <td class="impEncreTotal{{id}}"></td>
+                            <td id="impTempsManip{{id}}"></td>
+                            <input type="hidden" class="impTempsManipHidden" name="items[{{id}}].impTempsManip">
+                            <td id="impTempsImpr{{id}}"></td>                            
+                            <td id="impTemps{{id}}"></td>                            
+                            <td id="impCout{{id}}"></td>
+                            <td class="impPrixTotal{{id}}"></td>
+                        </tbody>
+                        <tfoot>
+                            <th></th>
+                            <th></th>                            
+                            <th>Temps total:</th>
+                            <th id="impTempsHrMin{{id}}"</th>                            
+                            <th>Coût total:</th>
+                            <th class="impPrixTotal{{id}}"></th>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+<!-- </div> <!-- end of Imprimante section -->

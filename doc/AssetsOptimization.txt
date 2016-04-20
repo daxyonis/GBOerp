@@ -1,0 +1,11 @@
+# application.conf
+# Set a Far-Future Expires for assets
+# (note: must be used alongside asset fingerprinting)
+assets.defaultCache="max-age=290304000"
+
+sbt-rjs
+
+see http://stackoverflow.com/questions/30609647/how-to-use-requirejs-optimizer-in-play-framework
+
+my webjars that do not seem rjs-ready
+handlebars

@@ -1,0 +1,19 @@
+ul.simpleList { 
+	list-style-type : none;
+	padding: 0px;
+	}
+	
+ul.simpleList li {
+	font-size: large;
+}	
+
+
+table#tableSuivi {
+	width: 90%;	
+	margin-right: auto;
+	margin-left: auto;
+	}
+	
+table#tableSuivi td {
+	font-size: large;
+}

@@ -1,0 +1,71 @@
+@(items: List[Item])
+
+@stylesheets = {
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
+}
+ 
+@javascripts = { 
+}
+
+@main("Liste des items", stylesheets, javascripts){
+	
+	<h2>Liste des items</h2>
+	
+	@if(items.isEmpty()) {
+		<p>Aucun item trouvé</p>
+		} else {	
+		<div class="table-responsive">
+		<table class="table table-striped">
+		<thead>
+			<tr>	
+				<th></th>		
+				<th>No Item</th>
+				<th>No Soumission</th>
+				<th>Nom</th>
+				<th>Description</th>
+				<th>Quantité</th>
+				<th>Hauteur</th>
+				<th>Largeur</th>
+				<th>Source prod</th>
+				<th>Frais variables</th>
+				<th>Frais installation</th>
+				<th>Prix fabrication</th>
+			</tr>
+		</thead>
+		<tbody>
+			@for(item <- items) {
+				<tr>					  
+					<td> <a href="#"><i class="glyphicon glyphicon-pencil"></i></a>
+						<a onclick="#"><i class="glyphicon glyphicon-trash"></i></a>
+					</td>							
+					<td>@item.getNoItem()</td>
+					<td>@item.getNoSoumission()</td>
+					<td>@item.getNomItem()</td>
+					<td>@item.getDescription()</td>
+					<td>@item.getQuantite()</td>
+					<td>@item.getHauteur()</td>
+					<td>@item.getLargeur()</td>
+					<td>@item.getSourceProd()</td>
+					<td>@item.getFraisVariables()</td>
+					<td>@item.getFraisInstallation()</td>
+					<td>@item.getPrixFab()</td>
+				</tr>
+			}
+		</tbody>
+		</table>
+		</div>
+		
+		<script>
+			function del(urlToDelete) {
+				$.ajax({
+					url:      urlToDelete,
+					type:     'DELETE',
+					success:  function(results) {
+						// refresh the page
+						location.reload();
+					}
+				});
+			}
+		</script>
+		}
+}
