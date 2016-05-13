@@ -1,1 +1,3 @@
-Play ERP application 
+Custom ERP web application
+Backend: uses Play framework 2.4 to provide both REST API or twirl-templates; uses Spring for DI, transactions, jdbc.
+Frontend: jQuery, Bootstrap, some pages are SPAs with BackboneJS + RequireJS 
